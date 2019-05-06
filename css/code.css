@@ -3,8 +3,11 @@ body{
 }
 
 .Slider{
-    border: 1px solid black;
-    padding: 20px;
+
+}
+
+img{
+
 }
 
 .location{
@@ -21,3 +24,4 @@ body{
     border: 1px solid limegreen;
     padding: 10px;
 }
+
