@@ -9,3 +9,4 @@ document.addEventListener('DOMContentLoaded', function (e) {
     var map = new Map();
     map.mapInit();
 })
+
