@@ -7,6 +7,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
     // Create and launch the map
     var map = new Map();
-    map.mapInit();
+    // map.mapInit();
 })
 

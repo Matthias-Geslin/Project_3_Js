@@ -2,13 +2,13 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/code.css">
-    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="./css/code.css">
+    <link rel="stylesheet" href="./css/normalize.css">
     <title>Title</title>
 </head>
 <body>
 <!--Slider part-->
-<section class="slider">
+<section class="Slider">
     <figure>
         <img src="" class="" alt="">
         <figcaption></figcaption>
@@ -35,12 +35,23 @@
 <div class="map">
 </div>
 
-<form action="" method="">
-    <label></label>
-    <input id="" type="" name="last-name">
-    <input id="" type="" name="first-name">
-    <input id="" type="submit" name="">
+<!--Location part-->
+<form class="location">
+    <label for="last-name">Nom: </label>
+    <input id="last-name" type="" name="last-name">
+    <label for="first-name">Prénom: </label>
+    <input id="first-name" type="" name="first-name">
+    <input type="submit" value="Réserver">
 </form>
-<script src="../js/script.js"></script>
+
+<canvas id="canvas" width="300" height="300">
+</canvas>
+
+<script src="./js/ajax.js"></script>
+<script src="./js/script.js"></script>
+<script src="./js/Slider.js"></script>
+<script src="./js/Map.js"></script>
+<script src="./js/Canvas.js"></script>
+<script src="./js/Location.js"></script>
 </body>
 </html>
