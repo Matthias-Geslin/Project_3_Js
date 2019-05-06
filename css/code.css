@@ -1,0 +1,23 @@
+body{
+    background-color: slategrey;
+}
+
+.Slider{
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.location{
+    padding: 50px;
+    border: 1px solid orangered;
+}
+
+.map{
+    padding: 50px;
+    border: 5px solid mediumpurple;
+}
+
+.canvas{
+    border: 1px solid limegreen;
+    padding: 10px;
+}
