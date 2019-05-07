@@ -2,4 +2,11 @@
 
 var Slider = function () {
 
-}
+
+    }
+
+
+
+
+
+

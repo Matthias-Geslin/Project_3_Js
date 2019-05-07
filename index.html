@@ -4,39 +4,60 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./css/code.css">
     <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <title>LocationMap</title>
 </head>
 <body>
 <!--Slider part-->
+<section class="slider">
+            <div class="picture fade mySlides">
+                <img src="./img/01.jpg" alt="01" style="width:100%">
+                <div class="numbertext">1 / 5</div>
+                <div class="text">Caption One</div>
+            </div>
 
-<ul>
+            <div class="picture fade mySlides">
+                <img src="./img/02.jpg" alt="02" style="width:100%">
+                <div class="numbertext">2 / 5</div>
+                <div class="text">Caption Two</div>
+            </div>
+
+            <div class="picture fade mySlides">
+                <img src="./img/03.jpg" alt="03" style="width:100%">
+                <div class="numbertext">3 / 5</div>
+                <div class="text">Caption Three</div>
+            </div>
+
+            <div class="picture fade mySlides">
+                <img src="./img/04.jpg" alt="04" style="width:100%">
+                <div class="numbertext">4 / 5</div>
+                <div class="text">Caption Four</div>
+            </div>
+
+            <div class="picture fade mySlides">
+                <img src="./img/05.jpg" alt="05" style="width:100%">
+                <div class="numbertext">5 / 5</div>
+                <div class="text">Caption Five</div>
+            </div>
+
+
     <div>
-        <img src="./img/01.jpg" alt="01">
-</ul>
+        <a class="prev" onclick="plusSlides(-1)"><i class="far fa-hand-point-left"></i></a>
+        <i class="fas fa-play"></i>
+        <i class="far fa-pause-circle pause"></i>
+        <a class="next" onclick="plusSlides(1)"><i class="far fa-hand-point-right"></i></a>
+    </div>
 
-<ul>
-    <div>
-        <img src="./img/03.jpg" alt="03">
+    <!-- The dots/circles -->
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
     </div>
-</ul>
 
-<ul>
-    <div>
-        <img src="./img/04.jpg" alt="04">
-    </div>
-</ul>
-
-<ul>
-    <div>
-        <img src="./img/02.jpg" alt="02">
-    </div>
-</ul>
-
-<ul>
-    </div>
-        <img src="./img/05.jpg" alt="05">
-    </div>
-</ul>
+</section>
 
 
 
