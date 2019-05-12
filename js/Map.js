@@ -1,6 +1,6 @@
 'use strict';
 
-var Map = function () {
+var initMap = function () {
     
 }
 

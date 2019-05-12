@@ -1,0 +1,41 @@
+/* TEAM */
+
+
+Mon rôle sur ce projet: Dev
+
+
+Site: m.geslin974[at]gmail.com, https://matthias-geslin.fr/
+
+
+Twitter: https://twitter.com/Matthiasgeslin
+
+
+Location: France
+
+
+
+                        [...]
+
+
+
+/* THANKS */
+
+
+Name: Geslin Matthias
+
+
+
+                        [...]
+
+
+
+/* SITE */
+
+
+Last update:  AAAA/MM/JJ
+
+
+Standards: HTML5, CSS3, JS
+
+
+Software: WebStorm

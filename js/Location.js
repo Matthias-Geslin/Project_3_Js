@@ -1,6 +1,6 @@
 'use strict';
 
-var Location = function () {
+var initLocation = function () {
     
 }
 

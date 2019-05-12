@@ -1,5 +1,5 @@
 'use strict';
 
-var Canvas = function () {
+var initCanvas = function () {
     
 }

@@ -21,12 +21,12 @@ li{
     position: relative;
 }
 
-mySlides{
+.picture{
     display: none;
 }
 
 img{
-    width: 300px;
+    width: 100%;
 }
 /*///////////////*/
 
