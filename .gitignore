@@ -1,5 +1,5 @@
 .idea/
 config/bdd.php
 config/bdd.sql
-.img/
+img/
 vendor/
