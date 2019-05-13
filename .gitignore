@@ -3,3 +3,4 @@ config/bdd.php
 config/bdd.sql
 img/
 vendor/
+.gitattibutes
