@@ -1,71 +1,92 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="./css/code.css">
-    <link rel="stylesheet" href="./css/normalize.css">
-    <link type="text/plain" rel="author" href="./humans.txt"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <title>LocationMap</title>
+
+    <link rel="canonical" href="https://https://javascript.matthias-geslin.fr/">
+    <link rel="icon" href="#" type="image/x-icon">
+
+    <link rel="author" href="./humans.txt"/>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/code.css">
 </head>
+
 <body>
 <!--Slider part-->
 <header class="slider">
+<!--    reverifier utilisation balise figure/figcaption avec span /p -->
     <figure class="picture fade">
         <img src="./img/01.jpg" alt="01">
-        <figcaption class="numbertext">1 / 5</figcaption>
-        <p class="text">Image 1</p>
+        <figcaption>
+            <span class="numbertext">1 / 5</span>
+            <p class="text">Image 1</p>
+        </figcaption>
     </figure>
 
     <figure class="picture fade">
         <img src="./img/02.jpg" alt="02">
-        <figcaption class="numbertext">2 / 5</figcaption>
-        <p class="text">Image 2</p>
+        <figcaption>
+            <span class="numbertext">2 / 5</span>
+            <p class="text">Image 2</p>
+        </figcaption>
     </figure>
 
     <figure class="picture fade">
         <img src="./img/03.jpg" alt="03">
-        <figcaption class="numbertext">3 / 5</figcaption>
-        <p class="text">Image 3</p>
+        <figcaption>
+            <span class="numbertext">3 / 5</span>
+            <p class="text">Image 3</p>
+        </figcaption>
     </figure>
 
     <figure class="picture fade">
         <img src="./img/04.jpg" alt="04">
-        <figcaption class="numbertext">4 / 5</figcaption>
-        <p class="text">Image 4</p>
+        <figcaption>
+            <span class="numbertext">4 / 5</span>
+            <p class="text">Image 4</p>
+        </figcaption>
     </figure>
 
     <figure class="picture fade">
         <img src="./img/05.jpg" alt="05">
-        <figcaption class="numbertext">5 / 5</figcaption>
-        <p class="text">Image 5</p>
+        <figcaption>
+            <span class="numbertext">5 / 5</span>
+            <p class="text">Image 5</p>
+        </figcaption>
     </figure>
 
     <!--    Controls-->
-    <div>
+    <fieldset>
+        <!--        inputs/labels à faire           reverifier mdn utilisation fieldset avec span
+         https://developer.mozilla.org/fr/docs/Web/HTML/Element/Fieldset
+         -->
         <span class="prev" onclick="plusSlides(-1)"><i class="far fa-hand-point-left"></i></span>
         <span><i class="fas fa-play"></i></span>
         <span><i class="far fa-pause-circle pause"></i></span>
         <span class="next" onclick="plusSlides(1)"><i class="far fa-hand-point-right"></i></span>
-    </div>
+    </fieldset>
 
     <!-- The dots/circles -->
     <div class="dot-part">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-        <span class="dot" onclick="currentSlide(4)"></span>
-        <span class="dot" onclick="currentSlide(5)"></span>
+        <ul>
+            <li class="dot" onclick="currentSlide(1)"></li>
+            <li class="dot" onclick="currentSlide(2)"></li>
+            <li class="dot" onclick="currentSlide(3)"></li>
+            <li class="dot" onclick="currentSlide(4)"></li>
+            <li class="dot" onclick="currentSlide(5)"></li>
+        </ul>
     </div>
 </header>
-
-
 
 <!--Map part-->
 <div class="map">
 </div>
-
-
 
 <!--Location part-->
 <form class="location">
@@ -79,10 +100,10 @@
 <canvas id="canvas" class="canvas" width="300" height="300"></canvas>
 
 <script src="./js/ajax.js"></script>
-<script src="./js/script.js"></script>
 <script src="./js/Slider.js"></script>
 <script src="./js/Map.js"></script>
-<script src="./js/Canvas.js"></script>
 <script src="./js/Location.js"></script>
+<script src="./js/Canvas.js"></script>
+<script src="./js/script.js"></script>
 </body>
 </html>
