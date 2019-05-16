@@ -8,7 +8,7 @@
     <title>LocationMap</title>
 
     <link rel="canonical" href="https://https://javascript.matthias-geslin.fr/">
-    <link rel="icon" href="#" type="image/x-icon">
+    <link rel="icon" href="./img/icon.png" type="image/x-icon">
 
     <link rel="author" href="./humans.txt"/>
 
@@ -17,10 +17,10 @@
     <link rel="stylesheet" href="./css/code.css">
 </head>
 
+
 <body>
 <!--Slider part-->
 <header class="slider">
-<!--    reverifier utilisation balise figure/figcaption avec span /p -->
     <figure class="picture fade">
         <img src="./img/01.jpg" alt="01">
         <figcaption>
@@ -61,32 +61,48 @@
         </figcaption>
     </figure>
 
+
     <!--    Controls-->
     <fieldset>
-        <!--        inputs/labels à faire           reverifier mdn utilisation fieldset avec span
-         https://developer.mozilla.org/fr/docs/Web/HTML/Element/Fieldset
-         -->
-        <span class="prev" onclick="plusSlides(-1)"><i class="far fa-hand-point-left"></i></span>
-        <span><i class="fas fa-play"></i></span>
-        <span><i class="far fa-pause-circle pause"></i></span>
-        <span class="next" onclick="plusSlides(1)"><i class="far fa-hand-point-right"></i></span>
-    </fieldset>
+        <input type="button"  id="previous">
+        <label for="previous"  class="prev" onclick="plusSlides(-1)">
+            <i class="far fa-hand-point-left"></i>
+        </label>
 
-    <!-- The dots/circles -->
-    <div class="dot-part">
-        <ul>
-            <li class="dot" onclick="currentSlide(1)"></li>
-            <li class="dot" onclick="currentSlide(2)"></li>
-            <li class="dot" onclick="currentSlide(3)"></li>
-            <li class="dot" onclick="currentSlide(4)"></li>
-            <li class="dot" onclick="currentSlide(5)"></li>
-        </ul>
-    </div>
+        <input type="button" id="play">
+        <label for="play" class="play" onclick="">
+            <i class="fas fa-play"></i>
+        </label>
+
+        <input type="button" id="pause">
+        <label for="pause" class="pause" onclick="">
+            <i class="far fa-pause-circle pause"></i>
+        </label>
+
+        <input type="button" id="next">
+        <label for="next" class="next" onclick="plusSlides(1)">
+            <i class="far fa-hand-point-right"></i>
+        </label>
+
+        <!-- The dots/circles -->
+        <div class="dot-part">
+            <ul>
+                <li class="dot" onclick="currentSlide(1)"></li>
+                <li class="dot" onclick="currentSlide(2)"></li>
+                <li class="dot" onclick="currentSlide(3)"></li>
+                <li class="dot" onclick="currentSlide(4)"></li>
+                <li class="dot" onclick="currentSlide(5)"></li>
+            </ul>
+        </div>
+    </fieldset>
 </header>
+
+
 
 <!--Map part-->
 <div class="map">
 </div>
+
 
 <!--Location part-->
 <form class="location">
@@ -97,7 +113,9 @@
     <input type="submit" value="Réserver">
 </form>
 
+
 <canvas id="canvas" class="canvas" width="300" height="300"></canvas>
+
 
 <script src="./js/ajax.js"></script>
 <script src="./js/Slider.js"></script>
