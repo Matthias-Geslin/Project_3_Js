@@ -22,7 +22,7 @@
 <!--Slider part-->
 <header class="slider">
     <figure class="picture fade">
-        <img src="./img/01.jpg" alt="01">
+        <img src="./img/01.jpg" alt="Première image">
         <figcaption>
             <span class="numbertext">1 / 5</span>
             <p class="text">Image 1</p>
@@ -30,7 +30,7 @@
     </figure>
 
     <figure class="picture fade">
-        <img src="./img/02.jpg" alt="02">
+        <img src="./img/02.jpg" alt="Deuxième image">
         <figcaption>
             <span class="numbertext">2 / 5</span>
             <p class="text">Image 2</p>
@@ -38,7 +38,7 @@
     </figure>
 
     <figure class="picture fade">
-        <img src="./img/03.jpg" alt="03">
+        <img src="./img/03.jpg" alt="Troisième image">
         <figcaption>
             <span class="numbertext">3 / 5</span>
             <p class="text">Image 3</p>
@@ -46,7 +46,7 @@
     </figure>
 
     <figure class="picture fade">
-        <img src="./img/04.jpg" alt="04">
+        <img src="./img/04.jpg" alt="Quatrième image">
         <figcaption>
             <span class="numbertext">4 / 5</span>
             <p class="text">Image 4</p>
@@ -54,7 +54,7 @@
     </figure>
 
     <figure class="picture fade">
-        <img src="./img/05.jpg" alt="05">
+        <img src="./img/05.jpg" alt="Cinquième image">
         <figcaption>
             <span class="numbertext">5 / 5</span>
             <p class="text">Image 5</p>
@@ -65,7 +65,7 @@
     <!--    Controls-->
     <fieldset>
         <input type="button"  id="previous">
-        <label for="previous"  class="prev" onclick="plusSlides(-1)">
+        <label for="previous"  class="prev" onclick="plusSlider(-1)">
             <i class="far fa-hand-point-left"></i>
         </label>
 
@@ -80,20 +80,9 @@
         </label>
 
         <input type="button" id="next">
-        <label for="next" class="next" onclick="plusSlides(1)">
+        <label for="next" class="next" onclick="plusSlider(1)">
             <i class="far fa-hand-point-right"></i>
         </label>
-
-        <!-- The dots/circles -->
-        <div class="dot-part">
-            <ul>
-                <li class="dot" onclick="currentSlide(1)"></li>
-                <li class="dot" onclick="currentSlide(2)"></li>
-                <li class="dot" onclick="currentSlide(3)"></li>
-                <li class="dot" onclick="currentSlide(4)"></li>
-                <li class="dot" onclick="currentSlide(5)"></li>
-            </ul>
-        </div>
     </fieldset>
 </header>
 

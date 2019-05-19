@@ -6,5 +6,5 @@ document.addEventListener('DOMContentLoaded', function (e) {
     slider.initSlider();
 
     var map = new Map();
-    map.initMap();
+    // map.initMap();
 })
