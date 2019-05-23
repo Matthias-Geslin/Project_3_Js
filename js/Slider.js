@@ -1,35 +1,29 @@
 'use strict';
 
-var n;
+var Slider = function () {
+    this.moveInSlide();
+};
+
+
 var slideIndex = 1;
-
-const Slider = function (n) {
-    this.initSlider(slideIndex);
-};
-
-// plusSlider onclick html
-function plusSlider(n) {
-    Slider.prototype.initSlider(slideIndex += n);
-}
-
-Slider.prototype.initSlider = function () {
-
+Slider.prototype.moveInSlide = function (number) {
     var i;
-    var x = document.getElementsByClassName("picture");
+    var picInSlide = document.getElementsByClassName("picture");
 
-    if (n > x.length) {
-        slideIndex = 1
+    function moveInSlide(number) {
+        slideIndex += number;
     }
 
-    if (n < 1) {
-        slideIndex = x.length
+    if ( number > picInSlide.length) {
+        slideIndex = 1;
     }
 
-    for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
+    if ( number < 1) {
+        slideIndex = picInSlide.length;
     }
 
-    x[slideIndex-1].style.display = "block";
+    for (i = 0; i < picInSlide.length; i++) {
+        picInSlide[i].style.display = "none";
+    }
+    picInSlide[slideIndex-1].style.display = "block";
 };
-
-
