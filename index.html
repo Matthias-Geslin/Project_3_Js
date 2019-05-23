@@ -12,7 +12,6 @@
 
     <link rel="author" href="humans.txt"/>
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/code.css">
 </head>
@@ -65,23 +64,23 @@
     <!--    Controls-->
     <fieldset>
         <input type="button"  id="previous" value="">
-        <label for="previous"  class="prev" onclick="plusSlider(-1)">
-            <i class="far fa-hand-point-left"></i>
+        <label for="previous"  class="prev" onclick="Slider.prototype.moveInSlide(slideIndex --)">
+            <img src="img/hand-point-left.svg" class="prev-mvt" alt="Svg image">
         </label>
 
         <input type="button" id="play">
         <label for="play" class="play" onclick="">
-            <i class="fas fa-play"></i>
+            <img src="img/play.svg" class="play-mvt" alt="Svg image">
         </label>
 
         <input type="button" id="pause">
         <label for="pause" class="pause" onclick="">
-            <i class="far fa-pause-circle pause"></i>
+            <img src="img/pause-circle.svg" class="pause-mvt" alt="Svg image">
         </label>
 
         <input type="button" id="next">
-        <label for="next" class="next" onclick="plusSlider(1)">
-            <i class="far fa-hand-point-right"></i>
+        <label for="next" class="next" onclick="Slider.prototype.moveInSlide(slideIndex ++)">
+            <img src="img/hand-point-right.svg" class="next-mvt" alt="Svg image">
         </label>
     </fieldset>
 </header>
