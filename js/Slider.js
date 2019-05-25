@@ -1,6 +1,6 @@
 'use strict';
 
-var Slider = function () {
+const Slider = function () {
     this.moveInSlide();
     this.playPauseSlide();
     this.playSlide();
@@ -13,6 +13,7 @@ Slider.prototype.moveInSlide = function (number) {
     let i;
     const picInSlide = document.getElementsByClassName("picture");
 
+    // Toggle the slide
     function moveInSlide(number) {
         slideIndex += number;
     }
@@ -31,24 +32,30 @@ Slider.prototype.moveInSlide = function (number) {
     picInSlide[slideIndex-1].style.display = "block";
 };
 
+
 Slider.prototype.playPauseSlide = function () {
     let time;
     const playInSlide = document.getElementById("play");
+    const pauseInSlide = document.getElementById("pause");
 
+    // Slide Play effect
     this.playSlide = function () {
         playInSlide.addEventListener('click', function () {
             time = window.setInterval(autoInSlide, 5000);
+            pauseInSlide.classList.remove('hide');
+            playInSlide.classList.add('hide');
         });
-
     };
 
     function autoInSlide() {
         Slider.prototype.moveInSlide(slideIndex +=1);
     }
 
-    const pauseInSlide = document.getElementById("pause");
+    // Slide pause effect
     this.pauseSlide = function () {
         pauseInSlide.addEventListener('click', function () {
-        window.clearInterval(time);
-    })};
+            window.clearInterval(time);
+            pauseInSlide.classList.add('hide');
+            playInSlide.classList.remove('hide');
+        })};
 };
