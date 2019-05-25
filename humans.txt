@@ -31,11 +31,4 @@ Name: Geslin Matthias
 
 /* SITE */
 
-
-Last update:  AAAA/MM/JJ
-
-
 Standards: HTML5, CSS3, JS
-
-
-Software: WebStorm
