@@ -61,10 +61,11 @@
     </figure>
 
 
+
     <!--    Controls-->
     <fieldset>
         <input type="button"  id="previous" value="">
-        <label for="previous"  class="prev" onclick="Slider.prototype.moveInSlide(slideIndex --)">
+        <label for="previous"  class="prev" onclick="Slider.prototype.moveInSlide(slideIndex -=1)">
             <img src="img/hand-point-left.svg" class="prev-mvt" alt="Svg image">
         </label>
 
@@ -79,7 +80,7 @@
         </label>
 
         <input type="button" id="next">
-        <label for="next" class="next" onclick="Slider.prototype.moveInSlide(slideIndex ++)">
+        <label for="next" class="next" onclick="Slider.prototype.moveInSlide(slideIndex +=1)">
             <img src="img/hand-point-right.svg" class="next-mvt" alt="Svg image">
         </label>
     </fieldset>
