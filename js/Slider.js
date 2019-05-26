@@ -18,11 +18,11 @@ Slider.prototype.moveInSlide = function (number) {
         slideIndex += number;
     }
 
-    if ( number > picInSlide.length) {
+    if (number > picInSlide.length) {
         slideIndex = 1;
     }
 
-    if ( number < 1) {
+    if (number < 1) {
         slideIndex = picInSlide.length;
     }
 
@@ -30,6 +30,26 @@ Slider.prototype.moveInSlide = function (number) {
         picInSlide[i].style.display = "none";
     }
     picInSlide[slideIndex-1].style.display = "block";
+
+    // Manual keypress slide move
+    window.addEventListener("keydown", function (event) {
+        if (event.defaultPrevented) {
+            return;
+        }
+
+        switch (event.key) {
+            case "ArrowLeft":
+                Slider.prototype.moveInSlide(slideIndex -=1);
+                break;
+            case "ArrowRight":
+                Slider.prototype.moveInSlide(slideIndex +=1);
+                break;
+            default:
+                return;
+        }
+
+        event.preventDefault();
+    }, true);
 };
 
 
