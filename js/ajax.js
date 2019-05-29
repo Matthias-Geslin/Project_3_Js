@@ -1,7 +1,3 @@
-function afficher(reponse) {
-    console.log(reponse);
-}
-
 function ajaxGet(url, callback) {
     var req = new XMLHttpRequest();
     req.open("GET", url);

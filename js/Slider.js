@@ -1,6 +1,6 @@
 'use strict';
 
-const Slider = function () {
+var Slider = function () {
     this.moveInSlide();
     this.playPauseSlide();
     this.playSlide();
@@ -32,7 +32,7 @@ Slider.prototype.moveInSlide = function (number) {
     picInSlide[slideIndex-1].style.display = "block";
 
     // Manual keypress slide move
-    window.addEventListener("keydown", function (event) {
+    document.addEventListener("keydown", function (event) {
         if (event.defaultPrevented) {
             return;
         }
