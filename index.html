@@ -12,6 +12,7 @@
 
     <link rel="author" href="humans.txt">
 
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.css' rel='stylesheet'>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/code.css">
 </head>
@@ -63,7 +64,7 @@
 
 
     <!--    Controls-->
-    <fieldset>
+    <div class="controls">
         <input type="button"  id="previous" value="">
         <label for="previous"  class="prev" onclick="Slider.prototype.moveInSlide(slideIndex -=1)">
             <img src="img/hand-point-left.svg" class="prev-mvt" alt="Svg image">
@@ -83,13 +84,13 @@
         <label for="next" class="next" onclick="Slider.prototype.moveInSlide(slideIndex +=1)">
             <img src="img/hand-point-right.svg" class="next-mvt" alt="Svg image">
         </label>
-    </fieldset>
+    </div>
 </header>
 
 
 
 <!--Map part-->
-<div class="map">
+<div class="map" id="map">
 </div>
 
 
@@ -105,7 +106,8 @@
 
 <canvas id="canvas" class="canvas" width="300" height="300"></canvas>
 
-
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.js"></script>
 <script src="js/ajax.js"></script>
 <script src="js/Slider.js"></script>
 <script src="js/Map.js"></script>
