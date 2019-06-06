@@ -42,7 +42,7 @@ header img {
 .fade {
     -webkit-animation: fade 1.5s;
     animation: fade 1.5s;
- }
+}
 
 
 
@@ -55,7 +55,7 @@ header img {
     justify-content: space-between;
 }
 
-input {
+.controls input {
     display: none;
 }
 
@@ -96,14 +96,9 @@ input {
 
 
 /*////////*/
-.cartography{
-    display: flex;
-    flex-direction: row;
-
-}
 .map {
     width: 100%;
-    height: 500px;
+    height: 400px;
 }
 
 /* map selectors toggle */
@@ -151,25 +146,38 @@ input {
 }
 
 
+/*///////////*/
+/* form part */
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
- #geocoder-container > #map {
-     min-width:50%;
-     margin-left:25%;
- }
+    width: 300px;
+    height: 200px;
+    align-items: center;
 
-
-
-.location {
-    padding: 50px;
     border: 1px solid orangered;
 }
 
+
+
+
+
 .canvas {
-    border: 1px solid limegreen;
-    padding: 10px;
+    width: 400px;
+    height: 300px;
+    position: relative;
+
+    background-color: whitesmoke;
+    border: 3px solid midnightblue;
 }
 
 
+/* Helpers */
+.br-5 {
+    border-radius: 5%;
+}
 
 
 
