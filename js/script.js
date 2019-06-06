@@ -7,4 +7,10 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
     var map = new Map();
     map.initMap();
+
+    var reservation = new Reservation();
+    reservation.initReservation();
+
+    var canvas = new Canvas();
+    canvas.initCanvas();
 });
