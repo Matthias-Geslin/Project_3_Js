@@ -13,7 +13,8 @@
     <link rel="author" href="humans.txt">
 
     <!--    Map box -->
-    <link rel="stylesheet" href="leaflet/css/leaflet.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 
     <!--    Basic css -->
     <link rel="stylesheet" href="css/normalize.css">
@@ -66,10 +67,10 @@
 
 
 
-    <!--    Controls-->
+    <!--    Controls    -->
     <div class="controls">
-        <input type="button"  id="previous" value="">
-        <label for="previous"  class="prev" onclick="Slider.prototype.moveInSlide(slideIndex -=1)">
+        <input type="button"  id="prev" value="">
+        <label for="prev"  class="prev" id="prev-lb">
             <img src="img/hand-point-left.svg" class="prev-mvt" alt="Svg image">
         </label>
 
@@ -84,55 +85,33 @@
         </label>
 
         <input type="button" id="next">
-        <label for="next" class="next" onclick="Slider.prototype.moveInSlide(slideIndex +=1)">
+        <label for="next" class="next" id="next-lb">
             <img src="img/hand-point-right.svg" class="next-mvt" alt="Svg image">
         </label>
     </div>
 </header>
 
-
-<div class="cartography">
-    <!--Map part-->
-    <div class="map" id="map"></div>
-
-    <!-- interaction menu -->
-    <nav id='listing-group' class='listing-group'>
-        <input type='checkbox' id='scrollZoom' checked='checked'>
-        <label for='scrollZoom'>Scroll zoom</label>
-        <input type='checkbox' id='boxZoom' checked='checked'>
-        <label for='boxZoom'>Box zoom</label>
-        <input type='checkbox' id='dragRotate' checked='checked'>
-        <label for='dragRotate'>Drag rotate</label>
-        <input type='checkbox' id='dragPan' checked='checked'>
-        <label for='dragPan'>Drag pan</label>
-        <input type='checkbox' id='keyboard' checked='checked'>
-        <label for='keyboard'>Keyboard</label>
-        <input type='checkbox' id='doubleClickZoom' checked='checked'>
-        <label for='doubleClickZoom'>Double click zoom</label>
-        <input type='checkbox' id='touchZoomRotate' checked='checked'>
-        <label for='touchZoomRotate'>Touch zoom rotate</label>
-    </nav>
-</div>
+<!--Map part-->
+<div class="map" id="map"></div>
 
 
 <!--Location part-->
-<form class="location">
+<form class="br-5">
     <label for="last-name">Nom: </label>
-    <input id="last-name" type="text" name="last-name">
+    <input id="last-name" type="text" name="last-name" placeholder="Nom">
     <label for="first-name">Prénom: </label>
-    <input id="first-name" type="text" name="first-name">
-    <input type="submit" value="Réserver">
+    <input id="first-name" type="text" name="first-name" placeholder="Prénom">
+    <input id="validate" type="button" value="Réserver">
 </form>
 
 
-<canvas id="canvas" class="canvas" width="300" height="300"></canvas>
 
+<canvas class="canvas br-5 hide" id="canvas" width="400" height="300"></canvas>
 
-<script src="leaflet/js/leaflet.js"></script>
 <script src="js/ajax.js"></script>
 <script src="js/Slider.js"></script>
 <script src="js/Map.js"></script>
-<script src="js/Location.js"></script>
+<script src="js/Reservation.js"></script>
 <script src="js/Canvas.js"></script>
 <script src="js/script.js"></script>
 </body>
