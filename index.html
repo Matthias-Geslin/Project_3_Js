@@ -12,10 +12,6 @@
 
     <link rel="author" href="humans.txt">
 
-    <!--    Map box -->
-    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
-    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-
     <!--    Basic css -->
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/code.css">
@@ -24,12 +20,12 @@
 
 <body>
 <!--Slider part-->
-<header class="slider">
+<header class="slider relative">
     <figure class="picture fade">
         <img src="img/01.jpg" alt="Première image">
         <figcaption>
-            <span class="numbertext">1 / 5</span>
-            <p class="text">Image 1</p>
+            <span class="numbertext relative">1 / 5</span>
+            <p class="text relative">Image 1</p>
         </figcaption>
     </figure>
 
@@ -68,7 +64,7 @@
 
 
     <!--    Controls    -->
-    <div class="controls">
+    <div class="controls flex">
         <input type="button"  id="prev" value="">
         <label for="prev"  class="prev" id="prev-lb">
             <img src="img/hand-point-left.svg" class="prev-mvt" alt="Svg image">
@@ -96,17 +92,25 @@
 
 
 <!--Location part-->
-<form class="br-5">
-    <label for="last-name">Nom: </label>
-    <input id="last-name" type="text" name="last-name" placeholder="Nom">
-    <label for="first-name">Prénom: </label>
-    <input id="first-name" type="text" name="first-name" placeholder="Prénom">
-    <input id="validate" type="button" value="Réserver">
-</form>
+<section id="reservation-box" class="form-box br-5 hide">
+    <h1>Station :</h1>
+    <i id="close-it" class="fas fa-times-circle"></i>
+    <form class="flex">
+        <label for="last-name">Nom: </label>
+        <input id="last-name" type="text" name="last-name" placeholder="Nom">
+        <label for="first-name">Prénom: </label>
+        <input id="first-name" type="text" name="first-name" placeholder="Prénom">
+        <input id="validate" type="button" value="Réserver">
+    </form>
+</section>
+
+<canvas class="canvas hide br-5 relative" id="canvas" width="400" height="300"></canvas>
 
 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFNjH6UulwVgJYZjymK4gFMPlKKtuFsxM&callback=initMap"
+        async defer></script>
 
-<canvas class="canvas br-5 hide" id="canvas" width="400" height="300"></canvas>
+<script src="https://kit.fontawesome.com/a4207f1681.js"></script>
 
 <script src="js/ajax.js"></script>
 <script src="js/Slider.js"></script>
