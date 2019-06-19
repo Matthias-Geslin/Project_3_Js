@@ -7,34 +7,41 @@ class Slider {
         this.total = this.slides.length - 1;
         this.current = 0;
 
+        this.playInSlide = document.getElementById("play");
+        this.pauseInSlide = document.getElementById("pause");
+
         // start on slide 1
         this.slide(this.current);
+
         document.getElementById("prev-lb").addEventListener("click", this.prev.bind(this));
         document.getElementById("next-lb").addEventListener("click", this.next.bind(this));
+        document.getElementById("play").addEventListener("click", this.play.bind(this));
+        document.getElementById("pause").addEventListener("click", this.stop.bind(this));
+        document.addEventListener("keydown", this.keyControl.bind(this));
     }
 }
 
 
-// NEXT
-Slider.prototype.next = function (interval) {
-    (this.current === this.total) ? this.current = 0 : this.current += 1;
-
-    this.stop();
-    this.slide(this.current);
-
-    if(typeof interval === 'number' && (interval % 1) === 0) {
-        var context = this;
-        this.run = setTimeout(function() {
-            context.next(interval);
-        }, interval);
-    }
+// Keyboard control
+Slider.prototype.keyControl = function() {
+    document.addEventListener('keydown', event => {
+        if (event.defaultPrevented) {
+            return;
+        }
+        if (event.key === "ArrowLeft"){
+            this.prev();
+        }
+        else if (event.key === "ArrowRight") {
+            this.next();
+        }
+        event.preventDefault();
+    });
 };
 
 
-
-// PREVIOUS
+// Previous
 Slider.prototype.prev = function (interval) {
-    (this.current === 0) ? this.current = this.total : this.current -= 1;
+    (this.current === 0) ? this.current = this.total : this.current --;
 
     this.stop();
     this.slide(this.current);
@@ -48,15 +55,39 @@ Slider.prototype.prev = function (interval) {
 };
 
 
+// Next
+Slider.prototype.next = function (interval) {
+    (this.current === this.total) ? this.current = 0 : this.current ++;
 
-// STOP PLAYING
-Slider.prototype.stop = function () {
-    clearTimeout(this.run);
+    this.stop();
+    this.slide(this.current);
+
+    if(typeof interval === 'number' && (interval % 1) === 0) {
+        var context = this;
+        this.run = setTimeout(function() {
+            context.next(interval);
+        }, interval);
+        this.pauseInSlide.classList.remove('hide');
+        this.playInSlide.classList.add('hide');
+    }
 };
 
 
+// Play
+Slider.prototype.play = function () {
+    this.next(5000);
+};
 
-// SELECT SLIDE
+
+// Stop Playing
+Slider.prototype.stop = function () {
+    clearTimeout(this.run);
+    this.pauseInSlide.classList.add('hide');
+    this.playInSlide.classList.remove('hide');
+};
+
+
+// Manual slide selection
 Slider.prototype.slide = function (index) {
     if (index >= 0 && index <= this.total) {
         this.stop();
@@ -71,9 +102,3 @@ Slider.prototype.slide = function (index) {
         alert("Index " + index + " doesn't exist. Available : 0 - " + this.total);
     }
 };
-
-
-
-
-
-
