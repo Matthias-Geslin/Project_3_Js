@@ -1,95 +1,79 @@
 'use strict';
 
 class Slider {
-    constructor() {
-        this.moveInSlide();
-        this.moveSlide();
-        this.playPauseSlide();
-        this.playSlide();
-        this.pauseSlide();
+    constructor(containerID) {
+        this.container = document.getElementById(containerID) || document.body;
+        this.slides = this.container.querySelectorAll('.picture');
+        this.total = this.slides.length - 1;
+        this.current = 0;
+
+        // start on slide 1
+        this.slide(this.current);
+        document.getElementById("prev-lb").addEventListener("click", this.prev.bind(this));
+        document.getElementById("next-lb").addEventListener("click", this.next.bind(this));
     }
 }
 
-let slideIndex = 1;
 
-Slider.prototype.moveInSlide = function (number) {
+// NEXT
+Slider.prototype.next = function (interval) {
+    (this.current === this.total) ? this.current = 0 : this.current += 1;
 
-    let i;
-    const picInSlide = document.getElementsByClassName("picture");
+    this.stop();
+    this.slide(this.current);
 
-    // Toggle the slide
-    this.moveSlide = function() {
-        const previousLabel = document.getElementById('prev-lb');
-        const nextLabel = document.getElementById('next-lb');
-
-        previousLabel.addEventListener('click', function () {
-            Slider.prototype.moveInSlide( slideIndex-=1)
-        });
-        nextLabel.addEventListener('click', function () {
-            Slider.prototype.moveInSlide(slideIndex +=1)
-        });
-    };
-
-
-    if (number > picInSlide.length) {
-        slideIndex = 1;
+    if(typeof interval === 'number' && (interval % 1) === 0) {
+        var context = this;
+        this.run = setTimeout(function() {
+            context.next(interval);
+        }, interval);
     }
-
-    if (number < 1) {
-        slideIndex = picInSlide.length;
-    }
-
-    for (i = 0; i < picInSlide.length; i++) {
-        picInSlide[i].style.display = "none";
-    }
-    picInSlide[slideIndex-1].style.display = "block";
-
-    // Manual keypress slide move
-    document.addEventListener("keydown", function (event) {
-        if (event.defaultPrevented) {
-            return;
-        }
-
-        switch (event.key) {
-            case "ArrowLeft":
-                Slider.prototype.moveInSlide(slideIndex -=1);
-                break;
-            case "ArrowRight":
-                Slider.prototype.moveInSlide(slideIndex +=1);
-                break;
-            default:
-                return;
-        }
-
-        event.preventDefault();
-    }, true);
 };
 
 
-Slider.prototype.playPauseSlide = function () {
-    let time;
-    const playInSlide = document.getElementById("play");
-    const pauseInSlide = document.getElementById("pause");
 
-    // Slide Play effect
-    this.playSlide = function () {
-        playInSlide.addEventListener('click', function () {
-            time = window.setInterval(autoInSlide, 5000);
-            pauseInSlide.classList.remove('hide');
-            playInSlide.classList.add('hide');
-        });
-    };
+// PREVIOUS
+Slider.prototype.prev = function (interval) {
+    (this.current === 0) ? this.current = this.total : this.current -= 1;
 
-    function autoInSlide() {
-        Slider.prototype.moveInSlide(slideIndex +=1);
+    this.stop();
+    this.slide(this.current);
+
+    if(typeof interval === 'number' && (interval % 1) === 0) {
+        var context = this;
+        this.run = setTimeout(function() {
+            context.prev(interval);
+        }, interval);
     }
-
-    // Slide pause effect
-    this.pauseSlide = function () {
-        pauseInSlide.addEventListener('click', function () {
-            window.clearInterval(time);
-            pauseInSlide.classList.add('hide');
-            playInSlide.classList.remove('hide');
-        })
-    };
 };
+
+
+
+// STOP PLAYING
+Slider.prototype.stop = function () {
+    clearTimeout(this.run);
+};
+
+
+
+// SELECT SLIDE
+Slider.prototype.slide = function (index) {
+    if (index >= 0 && index <= this.total) {
+        this.stop();
+        for (var s = 0; s <= this.total; s++) {
+            if (s === index) {
+                this.slides[s].style.display = "inline-block";
+            } else {
+                this.slides[s].style.display = 'none';
+            }
+        }
+    } else {
+        alert("Index " + index + " doesn't exist. Available : 0 - " + this.total);
+    }
+};
+
+
+
+
+
+
