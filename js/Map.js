@@ -17,54 +17,37 @@ function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), options);
 
 
-    ajaxGet("https://api.jcdecaux.com/vls/v1/stations?contract=nantes&apiKey=58866263d27fa1a6d54be4b8a79069f811cd87fd", function (reponse) {
+    ajaxGet("https://api.jcdecaux.com/vls/v1/stations?contract=Nantes&apiKey=58866263d27fa1a6d54be4b8a79069f811cd87fd", function (reponse) {
         var stations = JSON.parse(reponse);
         var lattitude, longitude;
-
-
         stations.forEach(function (station) {
             lattitude = station.position.lat;
             longitude = station.position.lng;
-
-            // Array of markers
-            var markers = [
-                {
-                    position: {
-                        lat: lattitude,
-                        lng: longitude
-                    },
-                }
-            ];
-
-
-            // Loop through markers
-            for (var i = 0; i < markers.length; i++) {
-                // Add marker
-                addMarker(markers[i]);
-            }
+            addMarker(station);
         })
 
-
         // Add Marker Function
-        function addMarker(markers) {
+        function addMarker(station) {
             var marker = new google.maps.Marker({
-                position: markers.coords,
+                position: station.position,
                 map: map,
             });
 
             // Check for customicon
-            if (markers.iconImage) {
-                marker.setIcon(markers.iconImage);
+            if (station.iconImage) {
+                marker.setIcon(station.iconImage);
             }
 
             // Check content
-            if (markers.content) {
+            if (station.name) {
                 var infoWindow = new google.maps.InfoWindow({
-                    content: markers.content
+                    content: station.name
                 });
-
+                const reserve = document.getElementById('reservation-box');
                 marker.addListener('click', function () {
-                    infoWindow.open(map, marker);
+
+                    reserve.classList.remove('hide');
+                    reserve.classList.add('flex');
                 });
             }
         }
