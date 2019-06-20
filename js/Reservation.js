@@ -1,30 +1,24 @@
 'use strict';
 
-var Reservation = function () {
-    this.initReservation();
-    this.toggleReservation();
-    this.toggleCanvas();
-    this.closed();
-};
+class Reservation {
+    constructor(){
+        this.initReservation();
+        this.toggleCanvas();
+        this.closed();
+    }
+}
 
 
 
 
 Reservation.prototype.initReservation = function () {
-    const mapTile = document.getElementById('map');
-
     const closeIt = document.getElementById('close-it');
     const reserve = document.getElementById('reservation-box');
 
     const validateBtn = document.getElementById('validate');
     const canvas = document.getElementById('canvas');
 
-    this.toggleReservation = function () {
-        mapTile.addEventListener('click', function () {
-            reserve.classList.remove('hide');
-            reserve.classList.add('flex');
-        })
-    };
+
 
    this.closed = function () {
         closeIt.addEventListener('click', function () {
