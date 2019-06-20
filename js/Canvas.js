@@ -1,92 +1,50 @@
 'use strict';
 
-var Canvas = function () {
-    this.initCanvas();
-};
+class Canvas {
+    constructor() {
+        this.initCanvas();
+    }
+}
 
 Canvas.prototype.initCanvas = function () {
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
 
+// define the type of the draw pointer
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+    ctx.lineWidth = 3;
 
+// set the origin of the draw
+    let isDrawing = false;
+    let lastX = 0;
+    let lastY = 0;
 
-            var canvas, context, tool;
+    function draw(X, Y) {
+        if(!isDrawing) return;
 
-            function init () {
-                // Find the canvas element.
-                canvas = document.getElementById('canvas');
-                if (!canvas) {
-                    alert('Error: I cannot find the canvas element!');
-                    return;
-                }
+        // set the color
+        ctx.strokeStyle = '#000000';
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(X, Y);
+        ctx.stroke();
+        [lastX, lastY] = [X, Y];
+    }
 
-                if (!canvas.getContext) {
-                    alert('Error: no canvas.getContext!');
-                    return;
-                }
+    canvas.addEventListener('mousedown', (e) => {
+        isDrawing = true;
+        [lastX, lastY] = [e.layerX, e.layerY];
+    });
+    canvas.addEventListener('mousemove', (e) => draw(e.layerX, e.layerY));
+    canvas.addEventListener('mouseup', () => isDrawing = false);
+    canvas.addEventListener('mouseout', () => isDrawing = false);
 
-                // Get the 2D canvas context.
-                context = canvas.getContext('2d');
-                if (!context) {
-                    alert('Error: failed to getContext!');
-                    return;
-                }
-
-                // Pencil tool instance.
-                tool = new Pencil();
-
-                // Attach the mousedown, mousemove and mouseup event listeners.
-                canvas.addEventListener('mousedown', ev_canvas, false);
-                canvas.addEventListener('mousemove', ev_canvas, false);
-                canvas.addEventListener('mouseup',   ev_canvas, false);
-            }init();
-
-            // This painting tool works like a drawing pencil which tracks the mouse
-            // movements.
-            function Pencil () {
-                var tool = this;
-                this.started = false;
-
-                // This is called when you start holding down the mouse button.
-                // This starts the pencil drawing.
-                this.mousedown = function (ev) {
-                    context.beginPath();
-                    context.moveTo(ev._x, ev._y);
-                    tool.started = true;
-                };
-
-                // This function is called every time you move the mouse. Obviously, it only
-                // draws if the tool.started state is set to true (when you are holding down
-                // the mouse button).
-                this.mousemove = function (ev) {
-                    if (tool.started) {
-                        context.lineTo(ev._x, ev._y);
-                        context.stroke();
-                    }
-                };
-
-                // This is called when you release the mouse button.
-                this.mouseup = function (ev) {
-                    if (tool.started) {
-                        tool.mousemove(ev);
-                        tool.started = false;
-                    }
-                };
-            }
-
-            // The general-purpose event handler. This function just determines the mouse
-            // position relative to the canvas element.
-            function ev_canvas (ev) {
-                if (ev.layerX || ev.layerX === 0) { // Firefox
-                    ev._x = ev.layerX;
-                    ev._y = ev.layerY;
-                } else if (ev.offsetX || ev.offsetX === 0) { // Opera
-                    ev._x = ev.offsetX;
-                    ev._y = ev.offsetY;
-                }
-
-                // Call the event handler of the tool.
-                var func = tool[ev.type];
-                if (func) {
-                    func(ev);
-                }
-            }
-};
+    // canvas.addEventListener('touchstart', (e) => {
+    //     isDrawing = true;
+    //     [lastX, lastY] = [e.targetTouches[0].layerX, e.targetTouches[0].layerY];
+    // });
+    // canvas.addEventListener('touchmove', (e) => draw(e.targetTouches[0].layerX, e.targetTouches[0].layerY));
+    // canvas.addEventListener('touchend', () => isDrawing = false);
+    // canvas.addEventListener('touchcancel', () => isDrawing = false);
+ };
