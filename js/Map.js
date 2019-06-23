@@ -78,8 +78,8 @@ function initMap() {
                         const nameTruncated = nameString.replace(regex, subst);
                         const addressTruncated = addressString.replace(regex, subst);
 
-                        stationName.innerText = nameTruncated;
-                        stationAddress.innerText = addressTruncated;
+                        stationName.innerText = "Nom: " + nameTruncated;
+                        stationAddress.innerText = "Adresse: " + addressTruncated;
                         bikeStands.innerText = station.bike_stands + " supports à vélo.";
 
                         if (station.available_bikes < 1) {
