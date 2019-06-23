@@ -1,3 +1,14 @@
+/* Keyframes */
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+@-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
 body {
     background-color: slategrey;
 }
@@ -5,11 +16,9 @@ body {
 /*/////////////////////*/
 /* slideshow container */
 .slider {
-    max-width: 800px;
     margin: auto;
 
     list-style: none;
-    border: 1px solid limegreen;
 }
 
 
@@ -92,7 +101,6 @@ header img {
 /*////////*/
 .map {
     width: 100%;
-    max-width: 800px;
     height: 400px;
     margin: auto;
 }
@@ -101,16 +109,14 @@ header img {
 
 /*///////////*/
 /* form part */
-.form-box {
+.reservation-box {
     flex-direction: column;
-
-    width: 75%;
 
     margin: auto;
     border: 4px solid darkcyan;
 }
 
-.form-box h1{
+.reservation-box h1{
     align-self: center;
     border-bottom: 3px solid darkcyan;
     font-size: 20px;
@@ -118,11 +124,10 @@ header img {
 
 .fa-times-circle {
     position: absolute;
-    right: 15%;
     margin-top: 10px;
     cursor: pointer;
     width: auto;
-    padding: 16px;
+    padding: 10px;
     transition: 0.6s ease;
     border-radius: 10px;
     user-select: none;
@@ -144,8 +149,6 @@ form input {
 .canvas {
     margin: auto;
 
-    max-width: 100%;
-    max-height: 100%;
     background-color: whitesmoke;
     border: 3px solid midnightblue;
 }
@@ -168,14 +171,27 @@ form input {
     border-radius: 5%;
 }
 
-
-/* Keyframes */
-@keyframes fade {
-    from {opacity: .4}
-    to {opacity: 1}
+main {
+    display: flex;
+    flex-direction: column;
 }
+/*/////////////////////*/
+/* media screen mobile */
+@media screen and (min-width: 479px) {
 
-@-webkit-keyframes fade {
-    from {opacity: .4}
-    to {opacity: 1}
+}
+/* media screen tablet */
+@media screen and (min-width: 959px) {
+    main {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    canvas {
+
+    }
+
+}
+/* media screen desktop */
+@media screen and (min-width: 1280px) {
+
 }
