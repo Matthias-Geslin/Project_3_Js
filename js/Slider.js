@@ -93,7 +93,7 @@ Slider.prototype.slide = function (index) {
         this.stop();
         for (var s = 0; s <= this.total; s++) {
             if (s === index) {
-                this.slides[s].style.display = "inline-block";
+                this.slides[s].style.display = "block";
             } else {
                 this.slides[s].style.display = 'none';
             }
