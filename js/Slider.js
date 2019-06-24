@@ -23,19 +23,25 @@ class Slider {
 
 
 // Keyboard control
-Slider.prototype.keyControl = function() {
-    document.addEventListener('keydown', event => {
-        if (event.defaultPrevented) {
-            return;
-        }
-        if (event.key === "ArrowLeft"){
+Slider.prototype.keyControl = function(event) {
+    switch (event.code) {
+        case "ArrowLeft":
             this.prev();
-        }
-        else if (event.key === "ArrowRight") {
+            break;
+        case "ArrowRight":
             this.next();
-        }
-        event.preventDefault();
-    });
+            break;
+        case "Space":
+            this.play();
+            break;
+        case "Enter":
+            this.stop();
+            break;
+        default:
+            console.log('Désolé la touche ' + event.key + ' est inactive sur cette page.');
+            break;
+    }
+    event.preventDefault();
 };
 
 
