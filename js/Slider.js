@@ -18,6 +18,7 @@ class Slider {
         document.getElementById("play").addEventListener("click", this.play.bind(this));
         document.getElementById("pause").addEventListener("click", this.stop.bind(this));
         document.addEventListener("keydown", this.keyControl.bind(this));
+        console.log('Les touches suivantes sont fonctionnelles: Flèche gauche - Flèche droite - Espace - Entrée');
     }
 }
 
@@ -53,9 +54,8 @@ Slider.prototype.prev = function (interval) {
     this.slide(this.current);
 
     if(typeof interval === 'number' && (interval % 1) === 0) {
-        var context = this;
         this.run = setTimeout(function() {
-            context.prev(interval);
+            this.prev(interval);
         }, interval);
     }
 };
@@ -69,9 +69,8 @@ Slider.prototype.next = function (interval) {
     this.slide(this.current);
 
     if(typeof interval === 'number' && (interval % 1) === 0) {
-        var context = this;
         this.run = setTimeout(function() {
-            context.next(interval);
+            this.next(interval);
         }, interval);
         this.pauseInSlide.classList.remove('hide');
         this.playInSlide.classList.add('hide');
