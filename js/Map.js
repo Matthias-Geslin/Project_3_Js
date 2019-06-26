@@ -33,12 +33,12 @@ function initMap() {
                 if (station.status === "OPEN") {
                     marker.icon= {
                         url: 'img/green.png',
-                    }
+                    };
                     stationStatus.textContent = "Ouverte";
                 } else {
                     marker.icon= {
                         url:'img/red.png'
-                    }
+                    };
                     stationStatus.textContent = "Fermée";
                 }
 
@@ -89,6 +89,8 @@ function initMap() {
                             availableBikes.innerText = station.available_bikes + " vélo(s) restant(s) disponible(s).";
                             buttonReservation.classList.remove('hide');
                         }
+                        sessionStorage.setItem('stationName', nameTruncated);
+                        sessionStorage.setItem('stationAddress', addressTruncated);
                     });
                 }
             }
