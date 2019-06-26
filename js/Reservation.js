@@ -5,11 +5,10 @@ class Reservation {
         this.initReservation();
         this.toggleCanvas();
         this.closed();
+
+        this.storage();
     }
 }
-
-
-
 
 Reservation.prototype.initReservation = function () {
     const closeIt = document.getElementById('close-it');
@@ -18,9 +17,7 @@ Reservation.prototype.initReservation = function () {
     const validateBtn = document.getElementById('validate');
     const canvas = document.getElementById('canvas');
 
-
-
-   this.closed = function () {
+    this.closed = function () {
         closeIt.addEventListener('click', function () {
             reserve.classList.remove('flex');
             reserve.classList.add('hide');
@@ -28,8 +25,7 @@ Reservation.prototype.initReservation = function () {
         })
     };
 
-
-   this.toggleCanvas = function () {
+    this.toggleCanvas = function () {
         validateBtn.addEventListener('click', function () {
             canvas.classList.remove('hide');
             canvas.classList.add('flex');
@@ -37,43 +33,27 @@ Reservation.prototype.initReservation = function () {
     };
 };
 
+Reservation.prototype.storage = function () {
+    var lastName;
+    lastName = document.getElementById('last-name');
+    var firstName;
+    firstName = document.getElementById('first-name');
 
-// class Reservation  {
-//     constructor(){
-//         this.initReservation();
-//         this.toggleReservation();
-//         this.closed();
-//         this.toggleCanvas();
-//         this.mapTile = document.getElementById('map');
-//         this.closeIt = document.getElementById('close-it');
-//         this.reserve = document.getElementById('reservation-box');
-//         this.validateBtn = document.getElementById('validate');
-//         this.canvas = document.getElementById('canvas');
-//     }
-// }
+    var stationAddress;
+    stationAddress = sessionStorage.getItem('stationAddress');
+    var stationName;
+    stationName = sessionStorage.getItem('stationName');
 
+    document.getElementById("validate").addEventListener("click",function() {
+        if ((lastName !== undefined) && (firstName !== undefined)) {
+            localStorage.setItem("lastname", lastName.value);
+            localStorage.setItem("firstname", firstName.value);
+        }
+    });
 
-//
-// Reservation.prototype.toggleReservation = function () {
-//     this.mapTile.addEventListener('click', function () {
-//         this.reserve.classList.remove('hide');
-//         this.reserve.classList.add('flex');
-//     })
-// };
-//
-//
-// Reservation.prototype.closed = function () {
-//     this.closeIt.addEventListener('click', function () {
-//         this.reserve.classList.remove('flex');
-//         this.reserve.classList.add('hide');
-//         this.canvas.classList.add('hide');
-//     })
-// };
-//
-//
-// Reservation.prototype.toggleCanvas = function () {
-//     this.validateBtn.addEventListener('click', function () {
-//         this.canvas.classList.remove('hide');
-//         this.canvas.classList.add('flex');
-//     })
-// };
+    sessionStorage.setItem('lastname', lastName.value);
+    sessionStorage.setItem('firstname', firstName.value);
+
+    var storedData = document.getElementById('reservation-data');
+    storedData.innerText = "Vélo réservé à la station " + stationName + ", à l'adresse: " +stationAddress + ". Par " + lastName.value + " " + firstName.value + ". Temps restant: ";
+};
