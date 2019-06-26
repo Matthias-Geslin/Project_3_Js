@@ -39,11 +39,13 @@ Slider.prototype.keyControl = function(event) {
             this.stop();
             break;
         default:
-            console.log('Désolé la touche ' + event.key + ' est inactive sur cette page.');
-            break;
+            console.log('Désolé la touche ' + event.key + ' est inactive pour le slider.');
+            return;
     }
     event.preventDefault();
+
 };
+
 
 
 // Previous
@@ -54,8 +56,9 @@ Slider.prototype.prev = function (interval) {
     this.slide(this.current);
 
     if(typeof interval === 'number' && (interval % 1) === 0) {
+        var context = this;
         this.run = setTimeout(function() {
-            this.prev(interval);
+            context.prev(interval);
         }, interval);
     }
 };
@@ -69,8 +72,9 @@ Slider.prototype.next = function (interval) {
     this.slide(this.current);
 
     if(typeof interval === 'number' && (interval % 1) === 0) {
+        var context = this;
         this.run = setTimeout(function() {
-            this.next(interval);
+            context.next(interval);
         }, interval);
         this.pauseInSlide.classList.remove('hide');
         this.playInSlide.classList.add('hide');
