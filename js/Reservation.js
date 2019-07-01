@@ -34,26 +34,33 @@ Reservation.prototype.initReservation = function () {
 };
 
 Reservation.prototype.storage = function () {
-    var lastName;
+    let lastName;
     lastName = document.getElementById('last-name');
-    var firstName;
+
+    let firstName;
     firstName = document.getElementById('first-name');
 
-    var stationAddress;
-    stationAddress = sessionStorage.getItem('stationAddress');
-    var stationName;
-    stationName = sessionStorage.getItem('stationName');
+    let stationAddress;
+    stationAddress = sessionStorage.getItem('stationaddress');
+
+    let stationName;
+    stationName = sessionStorage.getItem('stationname');
 
     document.getElementById("validate").addEventListener("click",function() {
         if ((lastName !== undefined) && (firstName !== undefined)) {
             localStorage.setItem("lastname", lastName.value);
             localStorage.setItem("firstname", firstName.value);
+
+            sessionStorage.setItem('lastname', lastName.value);
+            sessionStorage.setItem('firstname', firstName.value);
         }
+
     });
 
-    sessionStorage.setItem('lastname', lastName.value);
-    sessionStorage.setItem('firstname', firstName.value);
-
-    var storedData = document.getElementById('reservation-data');
+    let storedData = document.getElementById('reservation-data');
     storedData.innerText = "Vélo réservé à la station " + stationName + ", à l'adresse: " +stationAddress + ". Par " + lastName.value + " " + firstName.value + ". Temps restant: ";
+
 };
+
+
+
