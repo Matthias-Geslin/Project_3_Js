@@ -105,17 +105,16 @@
 
         <form class="flex">
             <label for="last-name">Nom: </label>
-            <input id="last-name" type="text" name="last-name" placeholder="Nom">
+            <input id="last-name" type="text" name="last-name" placeholder="Nom" required>
             <label for="first-name">Prénom: </label>
-            <input id="first-name" type="text" name="first-name" placeholder="Prénom">
+            <input id="first-name" type="text" name="first-name" placeholder="Prénom" required>
             <input id="validate" type="button" value="Réserver">
-
         </form>
-
         <canvas id="canvas" class="canvas flex hide br-5 relative"></canvas>
     </section>
+    <span id="reservation-data" class="reservation-data"></span>
 </main>
-<span id="reservation-data"></span>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFNjH6UulwVgJYZjymK4gFMPlKKtuFsxM&callback=initMap"
         async defer></script>
 
