@@ -89,8 +89,8 @@ function initMap() {
                             availableBikes.innerText = station.available_bikes + " vélo(s) restant(s) disponible(s).";
                             buttonReservation.classList.remove('hide');
                         }
-                        sessionStorage.setItem('stationName', nameTruncated);
-                        sessionStorage.setItem('stationAddress', addressTruncated);
+                        sessionStorage.setItem('stationname', nameTruncated);
+                        sessionStorage.setItem('stationaddress', addressTruncated);
                     });
                 }
             }
