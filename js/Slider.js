@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
 class Slider {
     constructor(containerID) {
         this.container = document.getElementById(containerID) || document.body;
-        this.slides = this.container.querySelectorAll('.picture');
+        this.slides = this.container.querySelectorAll(".picture");
         this.total = this.slides.length - 1;
         this.current = 0;
 
@@ -18,7 +18,7 @@ class Slider {
         document.getElementById("play").addEventListener("click", this.play.bind(this));
         document.getElementById("pause").addEventListener("click", this.stop.bind(this));
         document.addEventListener("keydown", this.keyControl.bind(this));
-        console.log('Les touches suivantes sont fonctionnelles: Flèche gauche - Flèche droite - Espace - Entrée');
+        console.log("Les touches suivantes sont fonctionnelles: Flèche gauche - Flèche droite - Espace - Entrée");
     }
 }
 
@@ -39,7 +39,7 @@ Slider.prototype.keyControl = function(event) {
             this.stop();
             break;
         default:
-            console.log('Désolé la touche ' + event.key + ' est inactive pour le slider.');
+            console.log("Désolé la touche " + event.key + " est inactive pour le slider.");
             return;
     }
     event.preventDefault();
@@ -55,7 +55,7 @@ Slider.prototype.prev = function (interval) {
     this.stop();
     this.slide(this.current);
 
-    if(typeof interval === 'number' && (interval % 1) === 0) {
+    if(typeof interval === "number" && (interval % 1) === 0) {
         var context = this;
         this.run = setTimeout(function() {
             context.prev(interval);
@@ -71,13 +71,13 @@ Slider.prototype.next = function (interval) {
     this.stop();
     this.slide(this.current);
 
-    if(typeof interval === 'number' && (interval % 1) === 0) {
+    if(typeof interval === "number" && (interval % 1) === 0) {
         var context = this;
         this.run = setTimeout(function() {
             context.next(interval);
         }, interval);
-        this.pauseInSlide.classList.remove('hide');
-        this.playInSlide.classList.add('hide');
+        this.pauseInSlide.classList.remove("hide");
+        this.playInSlide.classList.add("hide");
     }
 };
 
@@ -91,8 +91,8 @@ Slider.prototype.play = function () {
 // Stop Playing
 Slider.prototype.stop = function () {
     clearTimeout(this.run);
-    this.pauseInSlide.classList.add('hide');
-    this.playInSlide.classList.remove('hide');
+    this.pauseInSlide.classList.add("hide");
+    this.playInSlide.classList.remove("hide");
 };
 
 
@@ -104,7 +104,7 @@ Slider.prototype.slide = function (index) {
             if (s === index) {
                 this.slides[s].style.display = "block";
             } else {
-                this.slides[s].style.display = 'none';
+                this.slides[s].style.display = "none";
             }
         }
     } else {
