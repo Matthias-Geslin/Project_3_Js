@@ -50,8 +50,6 @@ Slider.prototype.keyControl = function(event) {
 
 // Previous
 Slider.prototype.prev = function (interval) {
-    (this.current === 0) ? this.current = this.total : this.current --;
-
     this.stop();
     this.slide(this.current);
 
@@ -61,13 +59,12 @@ Slider.prototype.prev = function (interval) {
             context.prev(interval);
         }, interval);
     }
+    (this.current === 0) ? this.current = this.total : this.current --;
 };
 
 
 // Next
 Slider.prototype.next = function (interval) {
-    (this.current === this.total) ? this.current = 0 : this.current ++;
-
     this.stop();
     this.slide(this.current);
 
@@ -79,6 +76,7 @@ Slider.prototype.next = function (interval) {
         this.pauseInSlide.classList.remove("hide");
         this.playInSlide.classList.add("hide");
     }
+    (this.current === this.total) ? this.current = 0 : this.current ++;
 };
 
 
