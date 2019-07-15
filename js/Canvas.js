@@ -40,6 +40,21 @@ Canvas.prototype.initCanvas = function () {
     canvas.addEventListener("mouseup", () => isDrawing = false);
     canvas.addEventListener("mouseout", () => isDrawing = false);
 
+    const buttonReservation = document.getElementById("validate");
+    function enable() {
+        buttonReservation.removeAttribute('disabled');
+    }
+    canvas.addEventListener("mousedown", function () {
+            setTimeout(enable,2500);
+    });
+
+    function disable() {
+        buttonReservation.setAttribute('disabled',"");
+    }
+    canvas.addEventListener("mouseout", function () {
+        setTimeout(disable,5000);
+    });
+
     // canvas.addEventListener("touchstart", (e) => {
     //     isDrawing = true;
     //     [lastX, lastY] = [e.targetTouches[0].layerX, e.targetTouches[0].layerY];
