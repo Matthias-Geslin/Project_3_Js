@@ -22,7 +22,7 @@ Reservation.prototype.initReservation = function () {
             reserve.classList.remove("flex");
             reserve.classList.add("hide");
             canvas.classList.add("hide");
-        })
+        });
     };
 
     this.toggleCanvas = function () {
@@ -46,24 +46,15 @@ Reservation.prototype.storage = function () {
     let stationName;
     stationName = sessionStorage.getItem("stationname");
 
-    sessionStorage.setItem("lastname",lastName.value);
-    sessionStorage.setItem("firstname",firstName.value);
-
     document.getElementById("validate").addEventListener("click",function() {
         if ((lastName !== undefined) && (firstName !== undefined)) {
             localStorage.setItem("lastname", lastName.value);
             localStorage.setItem("firstname", firstName.value);
-
-            sessionStorage.setItem("lastname", lastName.value);
-            sessionStorage.setItem("firstname", firstName.value);
         }
-
     });
-
 
     let storedData = document.getElementById("reservation-data");
     storedData.innerText = "Vélo réservé à la station " + stationName + ", à l'adresse: " +stationAddress + ". Par " + lastName.value + " " + firstName.value + ". Temps restant: ";
-
 };
 
 

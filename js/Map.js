@@ -1,7 +1,8 @@
 "use strict";
 
 var Map = function () {
-}
+
+};
 
 function initMap() {
     var map = new google.maps.Map(document.getElementById("map"), {
@@ -94,7 +95,7 @@ function initMap() {
                 lattitude = station.position.lat;
                 longitude = station.position.lng;
                 addMarker(station);
-            })
+            });
 
         });
 

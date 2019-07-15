@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 class Canvas {
     constructor() {
@@ -7,12 +7,12 @@ class Canvas {
 }
 
 Canvas.prototype.initCanvas = function () {
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
 
 // define the type of the draw pointer
-    ctx.lineJoin = 'round';
-    ctx.lineCap = 'round';
+    ctx.lineJoin = "round";
+    ctx.lineCap = "round";
     ctx.lineWidth = 3;
 
 // set the origin of the draw
@@ -24,7 +24,7 @@ Canvas.prototype.initCanvas = function () {
         if(!isDrawing) return;
 
         // set the color
-        ctx.strokeStyle = '#000000';
+        ctx.strokeStyle = "#000000";
         ctx.beginPath();
         ctx.moveTo(lastX, lastY);
         ctx.lineTo(X, Y);
@@ -32,19 +32,19 @@ Canvas.prototype.initCanvas = function () {
         [lastX, lastY] = [X, Y];
     }
 
-    canvas.addEventListener('mousedown', (e) => {
+    canvas.addEventListener("mousedown", (e) => {
         isDrawing = true;
         [lastX, lastY] = [e.layerX, e.layerY];
     });
-    canvas.addEventListener('mousemove', (e) => draw(e.layerX, e.layerY));
-    canvas.addEventListener('mouseup', () => isDrawing = false);
-    canvas.addEventListener('mouseout', () => isDrawing = false);
+    canvas.addEventListener("mousemove", (e) => draw(e.layerX, e.layerY));
+    canvas.addEventListener("mouseup", () => isDrawing = false);
+    canvas.addEventListener("mouseout", () => isDrawing = false);
 
-    // canvas.addEventListener('touchstart', (e) => {
+    // canvas.addEventListener("touchstart", (e) => {
     //     isDrawing = true;
     //     [lastX, lastY] = [e.targetTouches[0].layerX, e.targetTouches[0].layerY];
     // });
-    // canvas.addEventListener('touchmove', (e) => draw(e.targetTouches[0].layerX, e.targetTouches[0].layerY));
-    // canvas.addEventListener('touchend', () => isDrawing = false);
-    // canvas.addEventListener('touchcancel', () => isDrawing = false);
+    // canvas.addEventListener("touchmove", (e) => draw(e.targetTouches[0].layerX, e.targetTouches[0].layerY));
+    // canvas.addEventListener("touchend", () => isDrawing = false);
+    // canvas.addEventListener("touchcancel", () => isDrawing = false);
  };
