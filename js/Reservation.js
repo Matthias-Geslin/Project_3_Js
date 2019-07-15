@@ -44,7 +44,7 @@ Reservation.prototype.storage = function () {
     stationName = sessionStorage.getItem("stationname");
 
     document.getElementById("validate").addEventListener("click",function() {
-        if ((lastName !== undefined) && (firstName !== undefined)) {
+        if ((lastName !== "") && (firstName !== "")) {
             localStorage.setItem("lastname", lastName.value);
             localStorage.setItem("firstname", firstName.value);
         }
