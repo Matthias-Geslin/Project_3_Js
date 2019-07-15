@@ -43,23 +43,25 @@ Slider.prototype.keyControl = function(event) {
             return;
     }
     event.preventDefault();
-
 };
-
 
 
 // Previous
 Slider.prototype.prev = function (interval) {
     this.stop();
     this.slide(this.current);
-
     if(typeof interval === "number" && (interval % 1) === 0) {
         var context = this;
         this.run = setTimeout(function() {
             context.prev(interval);
         }, interval);
     }
-    (this.current === 0) ? this.current = this.total : this.current --;
+
+    if (this.current === 0) {
+        this.current = this.total;
+    }else {
+        this.current --;
+    }
 };
 
 
@@ -67,7 +69,6 @@ Slider.prototype.prev = function (interval) {
 Slider.prototype.next = function (interval) {
     this.stop();
     this.slide(this.current);
-
     if(typeof interval === "number" && (interval % 1) === 0) {
         var context = this;
         this.run = setTimeout(function() {
@@ -76,7 +77,12 @@ Slider.prototype.next = function (interval) {
         this.pauseInSlide.classList.remove("hide");
         this.playInSlide.classList.add("hide");
     }
-    (this.current === this.total) ? this.current = 0 : this.current ++;
+
+    if (this.current === this.total) {
+        this.current = 0;
+    }else {
+        this.current ++;
+    }
 };
 
 
@@ -98,7 +104,7 @@ Slider.prototype.stop = function () {
 Slider.prototype.slide = function (index) {
     if (index >= 0 && index <= this.total) {
         this.stop();
-        for (var s = 0; s <= this.total; s++) {
+        for (let s = 0; s <= this.total; s++) {
             if (s === index) {
                 this.slides[s].style.display = "block";
             } else {
