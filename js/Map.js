@@ -5,7 +5,7 @@ var Map = function () {
 };
 
 function initMap() {
-    var map = new google.maps.Map(document.getElementById("map"), {
+    var maps = new google.maps.Map(document.getElementById("map"), {
         zoom: 13,
         center: {lat: 47.2173, lng: -1.5534}
     });
@@ -17,7 +17,7 @@ function initMap() {
             function addMarker(station) {
                 var marker = new google.maps.Marker({
                     position: station.position,
-                    map: map,
+                    map: maps,
                     icon:""
                 });
 
