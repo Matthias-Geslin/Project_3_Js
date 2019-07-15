@@ -19,16 +19,13 @@ Reservation.prototype.initReservation = function () {
 
     this.closed = function () {
         closeIt.addEventListener("click", function () {
-            reserve.classList.remove("flex");
             reserve.classList.add("hide");
-            canvas.classList.add("hide");
         });
     };
 
     this.toggleCanvas = function () {
         validateBtn.addEventListener("click", function () {
             canvas.classList.remove("hide");
-            canvas.classList.add("flex");
         });
     };
 };
