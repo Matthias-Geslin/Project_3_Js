@@ -92,7 +92,7 @@
     <div class="map" id="map"></div>
 
     <!--Location part-->
-    <section id="reservation-box" class="reservation-box br-5 hide">
+    <section id="reservation-box" class="reservation-box hide br-5">
         <h1>Station <span id="station-status"></span>:</h1>
         <i id="close-it" class="fas fa-times-circle"></i>
 
@@ -108,9 +108,9 @@
             <input id="last-name" type="text" name="last-name" placeholder="Nom" required>
             <label for="first-name">Prénom: </label>
             <input id="first-name" type="text" name="first-name" placeholder="Prénom" required>
-            <input id="validate" type="button" value="Réserver">
+            <input id="validate" type="button" value="Réserver" disabled>
         </form>
-        <canvas id="canvas" class="canvas flex hide br-5 relative"></canvas>
+        <canvas id="canvas" class="canvas flex br-5 relative"></canvas>
     </section>
     <span id="reservation-data" class="reservation-data"></span>
 </main>
