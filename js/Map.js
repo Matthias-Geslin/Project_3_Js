@@ -1,7 +1,7 @@
 "use strict";
 
 var Map = function () {
-
+    // this.initMap();
 };
 
 function initMap() {
@@ -43,6 +43,7 @@ function initMap() {
                         content: station.name
                     });
                     const reserve = document.getElementById("reservation-box");
+
                     marker.addListener("click", function () {
 
                         reserve.classList.remove("hide");
@@ -65,7 +66,7 @@ function initMap() {
                         const regex = /#0+0/gm;
                         const nameString = `${station.name}`;
                         const addressString = `${station.address}`;
-                        const subst = ``;
+                        const subst = "";
 
                         // The substituted value will be contained in the result variable
                         const nameTruncated = nameString.replace(regex, subst);
