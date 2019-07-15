@@ -1,7 +1,5 @@
 # Project 3 Js
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9e00dd0a3eb642518abb599084afdc36)](https://app.codacy.com/app/Matthias-Geslin/Project_3_Js?utm_source=github.com&utm_medium=referral&utm_content=Matthias-Geslin/Project_3_Js&utm_campaign=Badge_Grade_Settings)
-
 ## Summary 
 
 +   Slideshow about the operation of the application
@@ -11,7 +9,7 @@
 
 ### Badges 
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8f5111a7003f461196cad9f29b50bde5)](https://www.codacy.com/app/Matthias-Geslin/Project_3_Js?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Matthias-Geslin/Project_3_Js&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9e00dd0a3eb642518abb599084afdc36)](https://app.codacy.com/app/Matthias-Geslin/Project_3_Js?utm_source=github.com&utm_medium=referral&utm_content=Matthias-Geslin/Project_3_Js&utm_campaign=Badge_Grade_Settings)
 [![Generic badge](https://img.shields.io/github/last-commit/Matthias-Geslin/Matthias-Geslin.svg?label=Last+Commit)](https://github.com/Matthias-Geslin/Project_3_Js/commits/master)
 [![ForTheBadge uses-html](http://ForTheBadge.com/images/badges/uses-html.svg)](http://ForTheBadge.com)
 [![ForTheBadge uses-css](http://ForTheBadge.com/images/badges/uses-css.svg)](http://ForTheBadge.com)
