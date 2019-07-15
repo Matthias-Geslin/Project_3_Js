@@ -21,7 +21,9 @@ Canvas.prototype.initCanvas = function () {
     let lastY = 0;
 
     function draw(X, Y) {
-        if(!isDrawing) return;
+        if(!isDrawing) {
+            return;
+        }
 
         // set the color
         ctx.strokeStyle = "#000000";
