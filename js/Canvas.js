@@ -42,14 +42,14 @@ Canvas.prototype.initCanvas = function () {
 
     const buttonReservation = document.getElementById("validate");
     function enable() {
-        buttonReservation.removeAttribute('disabled');
+        buttonReservation.removeAttribute("disabled");
     }
     canvas.addEventListener("mousedown", function () {
             setTimeout(enable,2500);
     });
 
     function disable() {
-        buttonReservation.setAttribute('disabled',"");
+        buttonReservation.setAttribute("disabled","");
     }
     canvas.addEventListener("mouseout", function () {
         setTimeout(disable,5000);
