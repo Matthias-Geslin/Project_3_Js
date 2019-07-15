@@ -9,7 +9,6 @@
 
 ### Badges 
 
-
 +   [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8f5111a7003f461196cad9f29b50bde5)](https://www.codacy.com/app/Matthias-Geslin/Project_3_Js?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Matthias-Geslin/Project_3_Js&amp;utm_campaign=Badge_Grade)
 
 +   [![Generic badge](https://img.shields.io/github/last-commit/Matthias-Geslin/Matthias-Geslin.svg?label=Last+Commit)](https://github.com/Matthias-Geslin/Project_3_Js/commits/master)
