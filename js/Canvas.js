@@ -46,8 +46,10 @@ Canvas.prototype.initCanvas = function () {
     function enable() {
         buttonReservation.removeAttribute("disabled");
     }
+
     canvas.addEventListener("mousedown", function () {
-            setTimeout(enable,2500);
+        setTimeout(enable,2500);
+        sessionStorage.setItem("reservationEnabled", true);
     });
 
     function disable() {
@@ -64,4 +66,4 @@ Canvas.prototype.initCanvas = function () {
     // canvas.addEventListener("touchmove", (e) => draw(e.targetTouches[0].layerX, e.targetTouches[0].layerY));
     // canvas.addEventListener("touchend", () => isDrawing = false);
     // canvas.addEventListener("touchcancel", () => isDrawing = false);
- };
+};
