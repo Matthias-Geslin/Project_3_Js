@@ -22,42 +22,26 @@
 <!--Slider part-->
 <header class="slider relative">
     <figure class="picture fade">
-        <img src="img/01.jpg" alt="Première image">
+        <img src="img/01.png" alt="Première image">
         <figcaption>
-            <span class="numbertext relative">1 / 5</span>
-            <p class="text relative">Image 1</p>
+            <span class="numbertext relative">1 / 3</span>
+            <p class="text relative">Actionnement du diaporama</p>
         </figcaption>
     </figure>
 
     <figure class="picture fade">
-        <img src="img/02.jpg" alt="Deuxième image">
+        <img src="img/02.png" alt="Deuxième image">
         <figcaption>
-            <span class="numbertext">2 / 5</span>
-            <p class="text">Image 2</p>
+            <span class="numbertext">2 / 3</span>
+            <p class="text">Fonctionnement de la map</p>
         </figcaption>
     </figure>
 
     <figure class="picture fade">
-        <img src="img/03.jpg" alt="Troisième image">
+        <img src="img/03.png" alt="Troisième image">
         <figcaption>
-            <span class="numbertext">3 / 5</span>
-            <p class="text">Image 3</p>
-        </figcaption>
-    </figure>
-
-    <figure class="picture fade">
-        <img src="img/04.jpg" alt="Quatrième image">
-        <figcaption>
-            <span class="numbertext">4 / 5</span>
-            <p class="text">Image 4</p>
-        </figcaption>
-    </figure>
-
-    <figure class="picture fade">
-        <img src="img/05.jpg" alt="Cinquième image">
-        <figcaption>
-            <span class="numbertext">5 / 5</span>
-            <p class="text">Image 5</p>
+            <span class="numbertext">3 / 3</span>
+            <p class="text">Réservation du vélo</p>
         </figcaption>
     </figure>
 
@@ -65,7 +49,7 @@
 
     <!--    Controls    -->
     <div class="controls flex">
-        <input type="button"  id="prev" value="">
+        <input type="button"  id="prev">
         <label for="prev"  class="prev" id="prev-lb">
             <img src="img/hand-point-left.svg" class="prev-mvt" alt="Svg image">
         </label>
@@ -109,11 +93,11 @@
             <label for="first-name">Prénom: </label>
             <input id="first-name" type="text" name="first-name" placeholder="Prénom" required>
             <input id="validate" type="button" value="Réserver" disabled>
+            <p id="re-booking" class="re-booking hide"><button class="button" onClick="window.location.reload().sessionStorage.clear()">Réserver une fois supplémentaire</button><em>Cette nouvelle réservation remplacera celle déjà effectuée.</em></p>
         </form>
         <canvas id="canvas" class="canvas flex br-5 relative"></canvas>
     </section>
-    <span id="reservation-data" class="reservation-data"></span>
-    <span class="time"></span>
+    <p id="reservation-data" class="reservation-data"></p>
 </main>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFNjH6UulwVgJYZjymK4gFMPlKKtuFsxM&callback=initMap"
