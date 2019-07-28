@@ -173,25 +173,19 @@ form input {
 
 main {
     display: flex;
+    flex-wrap: nowrap;
     flex-direction: column;
 }
-/*/////////////////////*/
-/* media screen mobile */
-@media screen and (min-width: 479px) {
 
+.re-booking {
+    flex-direction: column;
+    margin:auto;
 }
+
+
 /* media screen tablet */
 @media screen and (min-width: 959px) {
-    main {
-        flex-direction: row;
-        flex-wrap: nowrap;
+    .reservation-data {
+        margin: auto;
     }
-    canvas {
-
-    }
-
-}
-/* media screen desktop */
-@media screen and (min-width: 1280px) {
-
 }
