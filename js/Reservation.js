@@ -68,7 +68,7 @@ function calculate() {
             sessionStorage.setItem("reservationEnabled", false);
             clearInterval(x);
             window.location.reload().sessionStorage.clear();
-            window.alert("Votre session à expirée ainsi que votre réservation.")
+            window.alert("Votre session à expirée ainsi que votre réservation.");
         }
     } ,1000);
     localStorage.setItem("last-name", lastName.value);
