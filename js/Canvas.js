@@ -42,14 +42,17 @@ Canvas.prototype.initCanvas = function () {
     canvas.addEventListener("mouseup", () => isDrawing = false);
     canvas.addEventListener("mouseout", () => isDrawing = false);
 
+    const nom = document.getElementById("last-name");
+    const prenom = document.getElementById("first-name");
     const buttonReservation = document.getElementById("validate");
+
     function enable() {
         buttonReservation.removeAttribute("disabled");
     }
-
     canvas.addEventListener("mousedown", function () {
-        setTimeout(enable,2500);
-        sessionStorage.setItem("reservationEnabled", true);
+        if (nom.value && prenom.value !== "") {
+            setTimeout(enable,4000);
+        }
     });
 
     function disable() {
@@ -58,12 +61,4 @@ Canvas.prototype.initCanvas = function () {
     canvas.addEventListener("mouseout", function () {
         setTimeout(disable,5000);
     });
-
-    // canvas.addEventListener("touchstart", (e) => {
-    //     isDrawing = true;
-    //     [lastX, lastY] = [e.targetTouches[0].layerX, e.targetTouches[0].layerY];
-    // });
-    // canvas.addEventListener("touchmove", (e) => draw(e.targetTouches[0].layerX, e.targetTouches[0].layerY));
-    // canvas.addEventListener("touchend", () => isDrawing = false);
-    // canvas.addEventListener("touchcancel", () => isDrawing = false);
 };
