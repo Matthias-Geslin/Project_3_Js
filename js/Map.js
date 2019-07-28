@@ -1,7 +1,7 @@
 "use strict";
 
 var Map = function () {
-    // this.initMap();
+
 };
 
 function initMap() {
@@ -97,8 +97,5 @@ function initMap() {
                 longitude = station.position.lng;
                 addMarker(station);
             });
-
         });
-
 }
-
