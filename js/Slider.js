@@ -11,7 +11,6 @@ class Slider {
         this.pauseInSlide = document.getElementById("pause");
 
         // start on slide 1
-        this.slide(this.current);
 
         document.getElementById("prev-lb").addEventListener("click", this.prev.bind(this));
         document.getElementById("next-lb").addEventListener("click", this.next.bind(this));
@@ -22,6 +21,9 @@ class Slider {
     }
 }
 
+Slider.prototype.begin = function () {
+    this.slide(this.current);
+};
 
 // Keyboard control
 Slider.prototype.keyControl = function(event) {
