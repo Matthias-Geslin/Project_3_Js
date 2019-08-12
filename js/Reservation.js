@@ -60,7 +60,7 @@ Reservation.prototype.calculate = function () {
         let currentTime = new Date().getTime();
 
         let gapTime = expiration - currentTime;
-        let timer = sessionStorage.setItem("timer", gapTime);
+        sessionStorage.setItem("timer", gapTime);
 
         // Time calculations for days, hours, minutes and seconds
         let minutes = Math.floor((gapTime % (1000 * 60 * 60)) / (1000 * 60));
@@ -86,7 +86,7 @@ Reservation.prototype.calculate = function () {
 Reservation.prototype.reservation = function () {
     let reservation = sessionStorage.getItem("reservationEnabled");
     if (reservation === true) {
-        sessionStorage.getItem("timer");
+        var timer = sessionStorage.getItem("timer");
 
         this.calculate();
     }
@@ -98,8 +98,8 @@ Reservation.prototype.reservation = function () {
 Reservation.prototype.validation = function () {
     document.getElementById("validate").addEventListener("click",function() {
 
-        localStorage.getItem("last-name");
-        localStorage.getItem("first-name");
+        var lastName = localStorage.getItem("last-name");
+        var firstName = localStorage.getItem("first-name");
 
         sessionStorage.setItem("reservationEnabled", true);
 
@@ -109,10 +109,11 @@ Reservation.prototype.validation = function () {
         let delay = 20 * 60 * 1000;
 
         let countDownDate = new Date().getTime() + delay;
-        let expiration = sessionStorage.setItem("expiration", countDownDate);
+        sessionStorage.setItem("expiration", countDownDate);
+        let expiration = sessionStorage.getItem("expiration");
         let gapTime = expiration - currentTime;
 
-        let timer = sessionStorage.setItem("timer", gapTime);
+        sessionStorage.setItem("timer", gapTime);
 
         this.calculate();
         document.getElementById("re-booking").classList.remove("hide");
