@@ -2,13 +2,19 @@
 
 class Canvas {
     constructor() {
-        this.initCanvas();
+        this.enable();
+        this.disable();
+
+        this.canvas = document.getElementById("canvas");
+
+        this.lastName = document.getElementById("last-name");
+        this.firstName = document.getElementById("first-name");
+        this.buttonReservation = document.getElementById("validate");
     }
 }
 
 Canvas.prototype.initCanvas = function () {
-    const canvas = document.getElementById("canvas");
-    const ctx = canvas.getContext("2d");
+    var ctx = this.canvas.getContext("2d");
 
 // define the type of the draw pointer
     ctx.lineJoin = "round";
@@ -34,31 +40,36 @@ Canvas.prototype.initCanvas = function () {
         [lastX, lastY] = [X, Y];
     }
 
-    canvas.addEventListener("mousedown", (e) => {
+    this.canvas.addEventListener("mousedown", (e) => {
         isDrawing = true;
         [lastX, lastY] = [e.layerX, e.layerY];
     });
-    canvas.addEventListener("mousemove", (e) => draw(e.layerX, e.layerY));
-    canvas.addEventListener("mouseup", () => isDrawing = false);
-    canvas.addEventListener("mouseout", () => isDrawing = false);
+    this.canvas.addEventListener("mousemove", (e) => draw(e.layerX, e.layerY));
+    this.canvas.addEventListener("mouseup", () => isDrawing = false);
+    this.canvas.addEventListener("mouseout", () => isDrawing = false);
+};
 
-    const nom = document.getElementById("last-name");
-    const prenom = document.getElementById("first-name");
-    const buttonReservation = document.getElementById("validate");
 
+
+Canvas.prototype.enable = function () {
+    // Enabling the validate button
     function enable() {
-        buttonReservation.removeAttribute("disabled");
+        this.buttonReservation.removeAttribute("disabled");
     }
-    canvas.addEventListener("mousedown", function () {
-        if (nom.value && prenom.value !== "") {
+    this.canvas.addEventListener("mousedown", function () {
+        if (this.lastName.value && this.firstName.value !== "") {
             setTimeout(enable,4000);
         }
     });
+};
 
+
+Canvas.prototype.disable = function () {
+    // Disabling the validate button
     function disable() {
-        buttonReservation.setAttribute("disabled","");
+        this.buttonReservation.setAttribute("disabled","");
     }
-    canvas.addEventListener("mouseout", function () {
+    this.canvas.addEventListener("mouseout", function () {
         setTimeout(disable,5000);
     });
 };
