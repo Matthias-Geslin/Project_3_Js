@@ -2,12 +2,17 @@
 
 class Reservation {
     constructor(){
-        this.initReservation();
-        this.toggleCanvas();
         this.closed();
+        this.toggleCanvasEle();
 
         this.reservation();
         this.validation();
+
+        this.closeIt = document.getElementById("close-it");
+        this.reserve = document.getElementById("reservation-box");
+
+        this.validateBtn = document.getElementById("validate");
+        this.canvas = document.getElementById("canvas");
     }
 }
 
@@ -15,30 +20,30 @@ class Reservation {
 
 
 Reservation.prototype.initReservation = function () {
-    const closeIt = document.getElementById("close-it");
-    const reserve = document.getElementById("reservation-box");
-
-    const validateBtn = document.getElementById("validate");
-    const canvas = document.getElementById("canvas");
-
     this.closed = function () {
-        closeIt.addEventListener("click", function () {
-            reserve.classList.add("hide");
-        });
+        this.closeIt.addEventListener("click", this.hideReservation.bind(this));
     };
 
-    this.toggleCanvas = function () {
-        validateBtn.addEventListener("click", function () {
-            canvas.classList.remove("hide");
-        });
+    this.toggleCanvasEle = function () {
+        this.validateBtn.addEventListener("click", this.toggleCanvas.bind(this));
     };
+};
+
+
+Reservation.prototype.hideReservation = function () {
+    this.reserve.classList.add("hide");
+};
+
+
+Reservation.prototype.toggleCanvas = function () {
+    this.canvas.classList.remove("hide");
 };
 
 
 
 
 // Time calculator
-function calculate() {
+Reservation.prototype.calculate = function () {
     let lastName = document.getElementById("last-name");
     let firstName = document.getElementById("first-name");
 
@@ -47,19 +52,19 @@ function calculate() {
 
     let storedData = document.getElementById("reservation-data");
 
-    var expiration = sessionStorage.getItem("expiration");
+    let expiration = sessionStorage.getItem("expiration");
 
 
-    var x = setInterval(function() {
+    let x = setInterval(function() {
 
-        var currentTime = new Date().getTime();
+        let currentTime = new Date().getTime();
 
-        var gapTime = expiration - currentTime;
-        var timer = sessionStorage.setItem("timer", gapTime);
+        let gapTime = expiration - currentTime;
+        let timer = sessionStorage.setItem("timer", gapTime);
 
         // Time calculations for days, hours, minutes and seconds
-        var minutes = Math.floor((gapTime % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((gapTime % (1000 * 60)) / 1000);
+        let minutes = Math.floor((gapTime % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((gapTime % (1000 * 60)) / 1000);
 
         if(gapTime > 0) {
             storedData.innerHTML = "<p>Vélo réservé à la station " + stationName + ", à l'adresse: " +stationAddress + ". Par " + lastName.value + " " + firstName.value + ". Temps restant: " + minutes + "min et " + seconds + "s.</p>" ;
@@ -73,17 +78,17 @@ function calculate() {
     } ,1000);
     localStorage.setItem("last-name", lastName.value);
     localStorage.setItem("first-name", firstName.value);
-}
+};
 
 
 
 
 Reservation.prototype.reservation = function () {
-    var reservation = sessionStorage.getItem("reservationEnabled");
+    let reservation = sessionStorage.getItem("reservationEnabled");
     if (reservation === true) {
         sessionStorage.getItem("timer");
 
-        calculate();
+        this.calculate();
     }
 };
 
@@ -98,18 +103,18 @@ Reservation.prototype.validation = function () {
 
         sessionStorage.setItem("reservationEnabled", true);
 
-        var reserve = sessionStorage.getItem("reservationEnabled");
+        let reserve = sessionStorage.getItem("reservationEnabled");
 
-        var currentTime = new Date().getTime();
-        var delay = 20 * 60 * 1000;
+        let currentTime = new Date().getTime();
+        let delay = 20 * 60 * 1000;
 
-        var countDownDate = new Date().getTime() + delay;
-        var expiration = sessionStorage.setItem("expiration", countDownDate);
-        var gapTime = expiration - currentTime;
+        let countDownDate = new Date().getTime() + delay;
+        let expiration = sessionStorage.setItem("expiration", countDownDate);
+        let gapTime = expiration - currentTime;
 
-        var timer = sessionStorage.setItem("timer", gapTime);
+        let timer = sessionStorage.setItem("timer", gapTime);
 
-        calculate();
+        this.calculate();
         document.getElementById("re-booking").classList.remove("hide");
         document.getElementById("re-booking").classList.add("flex");
     });
