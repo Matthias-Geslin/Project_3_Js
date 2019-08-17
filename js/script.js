@@ -1,16 +1,18 @@
 "use strict";
 
-document.addEventListener("DOMContentLoaded", function (e) {
-    // Create and launch the slider
-    var slider = new Slider();
-    slider.begin();
+// Create and launch the slider
+var slider = new Slider();
+slider.begin();
 
-    var map = new Map();
+var map = new GoogleMap();
+function initMap() {
+    map.initMap();
+}
 
-    var reservation = new Reservation();
-    reservation.initReservation();
+var reservation = new Reservation();
+reservation.initReservation();
+reservation.closed();
+reservation.toggleCanvasEle();
 
-    var canvas = new Canvas();
-    canvas.initCanvas();
-
-});
+var canvas = new Canvas();
+canvas.initCanvas();
