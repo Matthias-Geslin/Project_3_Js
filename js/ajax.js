@@ -5,11 +5,11 @@ function ajaxGet(url, callback) {
         if (req.status >= 200 && req.status < 400) {
             callback(req.responseText);
         } else {
-            console.error(req.status + " " + req.statusText + " " + url);
+            window.alert(req.status + " " + req.statusText + " " + url);
         }
     });
     req.addEventListener("error", function () {
-        console.error("Erreur réseau avec l'URL " + url);
+        window.alert("Erreur réseau avec l'URL " + url);
     });
     req.send(null);
 }
