@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>LocationMap</title>
+    <title>Location de Vélo</title>
 
     <link rel="canonical" href="https://javascript.matthias-geslin.fr/">
     <link rel="icon" href="img/icon.png" type="image/x-icon">
@@ -93,7 +93,7 @@
             <label for="first-name">Prénom: </label>
             <input id="first-name" type="text" name="first-name" placeholder="Prénom" required>
             <input id="validate" type="button" value="Réserver" disabled>
-            <p id="re-booking" class="re-booking hide"><button class="button" onClick="window.location.reload().sessionStorage.clear()">Réserver une fois supplémentaire</button><em>Cette nouvelle réservation remplacera celle déjà effectuée.</em></p>
+            <p id="re-booking" class="re-booking hide"><button class="button" onClick="window.sessionStorage.clear()">Réserver une fois supplémentaire</button><em>Cette nouvelle réservation remplacera celle déjà effectuée.</em></p>
         </form>
         <canvas id="canvas" class="canvas flex br-5 relative"></canvas>
     </section>
