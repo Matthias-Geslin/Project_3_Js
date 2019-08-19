@@ -2,12 +2,8 @@
 
 class Reservation {
     constructor(){
-        this.closed();
-        this.toggleCanvasEle();
-
         this.reservation();
         this.validation();
-
         this.closeIt = document.getElementById("close-it");
         this.reserve = document.getElementById("reservation-box");
 
@@ -72,7 +68,7 @@ Reservation.prototype.calculate = function () {
         }else {
             sessionStorage.setItem("reservationEnabled", false);
             clearInterval(x);
-            window.location.reload().sessionStorage.clear();
+            window.sessionStorage.clear();
             window.alert("Votre session à expirée ainsi que votre réservation.");
         }
     } ,1000);
@@ -97,7 +93,6 @@ Reservation.prototype.reservation = function () {
 
 Reservation.prototype.validation = function () {
     document.getElementById("validate").addEventListener("click",function() {
-
         var lastName = localStorage.getItem("last-name");
         var firstName = localStorage.getItem("first-name");
 
@@ -115,7 +110,6 @@ Reservation.prototype.validation = function () {
 
         sessionStorage.setItem("timer", gapTime);
 
-        this.calculate();
         document.getElementById("re-booking").classList.remove("hide");
         document.getElementById("re-booking").classList.add("flex");
     });
