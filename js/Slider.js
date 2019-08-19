@@ -17,7 +17,6 @@ class Slider {
         document.getElementById("play").addEventListener("click", this.play.bind(this));
         document.getElementById("pause").addEventListener("click", this.stop.bind(this));
         document.addEventListener("keydown", this.keyControl.bind(this));
-        console.log("Les touches suivantes sont fonctionnelles: Flèche gauche - Flèche droite - Espace - Entrée");
     }
 }
 
@@ -41,7 +40,6 @@ Slider.prototype.keyControl = function(event) {
             this.stop();
             break;
         default:
-            console.log("Désolé la touche " + event.key + " est inactive pour le slider.");
             return;
     }
     event.preventDefault();
