@@ -51,48 +51,48 @@ class GoogleMap {
                         });
                         const reserve = document.getElementById("reservation-box");
 
-                        // marker.addEventListener("click", function () {
-                        //
-                        //     reserve.classList.remove("hide");
-                        //     reserve.classList.add("flex");
-                        //
-                        //     const stationName = document.getElementById("station-name");
-                        //     const stationAddress = document.getElementById("station-address");
-                        //     const bikeStands = document.getElementById("station-stands");
-                        //     const availableBikes = document.getElementById("available-bikes");
-                        //     const buttonReservation = document.getElementById("validate");
-                        //
-                        //     // Status infos
-                        //     if (station.status === "OPEN") {
-                        //         stationStatus.textContent = "Ouverte";
-                        //     } else {
-                        //         stationStatus.textContent = "Fermée";
-                        //     }
-                        //
-                        //     // Removing excessive numbers with regex
-                        //     const regex = /#0+0/gm;
-                        //     const nameString = `${station.name}`;
-                        //     const addressString = `${station.address}`;
-                        //     const subst = "";
-                        //
-                        //     // The substituted value will be contained in the result variable
-                        //     const nameTruncated = nameString.replace(regex, subst);
-                        //     const addressTruncated = addressString.replace(regex, subst);
-                        //
-                        //     stationName.innerText = "Nom: " + nameTruncated;
-                        //     stationAddress.innerText = "Adresse: " + addressTruncated;
-                        //     bikeStands.innerText = station.bike_stands + " supports à vélo.";
-                        //
-                        //     if (station.available_bikes < 1) {
-                        //         availableBikes.innerText = "Aucun vélo de disponible à cette station.";
-                        //         buttonReservation.classList.add("hide");
-                        //     } else if (station.available_bikes > 0) {
-                        //         availableBikes.innerText = station.available_bikes + " vélo(s) restant(s) disponible(s).";
-                        //         buttonReservation.classList.remove("hide");
-                        //     }
-                        //     sessionStorage.setItem("stationname", nameTruncated);
-                        //     sessionStorage.setItem("stationaddress", addressTruncated);
-                        // });
+                        marker.addListener("click", function () {
+
+                            reserve.classList.remove("hide");
+                            reserve.classList.add("flex");
+
+                            const stationName = document.getElementById("station-name");
+                            const stationAddress = document.getElementById("station-address");
+                            const bikeStands = document.getElementById("station-stands");
+                            const availableBikes = document.getElementById("available-bikes");
+                            const buttonReservation = document.getElementById("validate");
+
+                            // Status infos
+                            if (station.status === "OPEN") {
+                                stationStatus.textContent = "Ouverte";
+                            } else {
+                                stationStatus.textContent = "Fermée";
+                            }
+
+                            // Removing excessive numbers with regex
+                            const regex = /#0+0/gm;
+                            const nameString = `${station.name}`;
+                            const addressString = `${station.address}`;
+                            const subst = "";
+
+                            // The substituted value will be contained in the result variable
+                            const nameTruncated = nameString.replace(regex, subst);
+                            const addressTruncated = addressString.replace(regex, subst);
+
+                            stationName.innerText = "Nom: " + nameTruncated;
+                            stationAddress.innerText = "Adresse: " + addressTruncated;
+                            bikeStands.innerText = station.bike_stands + " supports à vélo.";
+
+                            if (station.available_bikes < 1) {
+                                availableBikes.innerText = "Aucun vélo de disponible à cette station.";
+                                buttonReservation.classList.add("hide");
+                            } else if (station.available_bikes > 0) {
+                                availableBikes.innerText = station.available_bikes + " vélo(s) restant(s) disponible(s).";
+                                buttonReservation.classList.remove("hide");
+                            }
+                            sessionStorage.setItem("stationname", nameTruncated);
+                            sessionStorage.setItem("stationaddress", addressTruncated);
+                        });
                     }
 
                 }
