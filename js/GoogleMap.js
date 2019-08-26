@@ -6,7 +6,7 @@ class GoogleMap {
     }
 
     initMap() {
-        var maps = new google.maps.Map(document.getElementById("map"), {
+        var map = new google.maps.Map(document.getElementById("map"), {
             zoom: 13,
             center: this.nantes
         });
@@ -28,7 +28,7 @@ class GoogleMap {
 
                     var marker = new google.maps.Marker({
                         position: station.position,
-                        map: maps,
+                        map: map,
                         icon:""
                     })
                     // Check if station Open
