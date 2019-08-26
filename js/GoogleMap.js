@@ -6,22 +6,13 @@ class GoogleMap {
     }
 
     initMap() {
-        var map = new google.maps.Map(document.getElementById("map"), {
+        var map = new google.maps.Map(document.getElementById("google-map"), {
             zoom: 13,
             center: this.nantes
         });
 
         ajaxGet("https://api.jcdecaux.com/vls/v1/stations?contract=Nantes&apiKey=58866263d27fa1a6d54be4b8a79069f811cd87fd",
             function (reponse) {
-                var stations = JSON.parse(reponse);
-                var latitude, longitude;
-                // Add Markers for each station latitude & longitude
-                stations.forEach(function (station) {
-                    latitude = station.position.lat;
-                    longitude = station.position.lng;
-                    addMarker(station);
-                });
-
 
                 function addMarker(station) {
                     let stationStatus = document.getElementById("station-status");
@@ -30,7 +21,7 @@ class GoogleMap {
                         position: station.position,
                         map: map,
                         icon:""
-                    })
+                    });
                     // Check if station Open
                     if (station.status === "OPEN") {
                         marker.icon= {
@@ -96,6 +87,15 @@ class GoogleMap {
                     }
 
                 }
+
+                var stations = JSON.parse(reponse);
+                var latitude, longitude;
+                // Add Markers for each station latitude & longitude
+                stations.forEach(function (station) {
+                    latitude = station.position.lat;
+                    longitude = station.position.lng;
+                    addMarker(station);
+                });
             });
     };
-};
+}
