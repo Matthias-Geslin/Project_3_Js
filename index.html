@@ -73,7 +73,7 @@
 
 <main>
     <!--Map part-->
-    <div class="map" id="map"></div>
+    <div class="map" id="google-map"></div>
 
     <!--Location part-->
     <section id="reservation-box" class="reservation-box hide br-5">
@@ -97,7 +97,16 @@
         </form>
         <canvas id="canvas" class="canvas flex br-5 relative"></canvas>
     </section>
-    <p id="reservation-data" class="reservation-data"></p>
+
+    <footer id="infoReservation" class="reservation-data">
+        <p id="noReservation" class="">No reservations done</p>
+        <div id="resConfirmed" class="hide">
+           <p>Réservation confirmée par </p><span id="lastNameConfirm"></span> <span id="firstNameConfirm"></span> à cette adresse :
+            <p id="stationConfirm"></p>
+            Vous avez <span id="minTimer"></span> minute(s) et <span id="secTimer"></span> seconde(s) devant vous.
+        </div>
+        <p id="reservationTimerUp" class="hide">time's up, resa canceld</p>
+    </footer>
 </main>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFNjH6UulwVgJYZjymK4gFMPlKKtuFsxM&callback=initMap"
