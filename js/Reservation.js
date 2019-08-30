@@ -4,28 +4,29 @@ class Reservation {
     constructor() {
         this.closeIt = document.getElementById("close-it");
         this.reserve = document.getElementById("reservation-box");
+        this.blockInfoResa = document.getElementById("infoReservation");
 
         this.validateBtn = document.getElementById("validate");
         this.canvas = document.getElementById("canvas");
+        this.stationAdressConfirm = document.getElementById("stationConfirm");
 
+        this.lastNameConfirm = document.getElementById("lastNameConfirm");
+        this.firstNameConfirm = document.getElementById("firstNameConfirm");
 
-        this.blockInfoResa = document.getElementById("infoReservation");
-        this.address = sessionStorage.getItem("stationAdress");
-        this.noRes = document.getElementById("noRes");
-        this.stationConfirm = document.getElementById("stationConfirm");
-        this.confirmResa = document.getElementById("confirmResa");
-        this.resConf = document.getElementById("resConf");
-        this.resStop = document.getElementById("resStop");
+        this.noReservation = document.getElementById("noReservation");
+        this.resConfirmed = document.getElementById("resConfirmed");
+        this.reservationTimerUp = document.getElementById("reservationTimerUp");
+        this.stationAdress = sessionStorage.getItem("stationadress");
+        this.confirmResa = document.getElementById("validate");
 
-        this.nameConfirm = document.getElementById("nameConfirm");
-        this.fNameConfirm = document.getElementById("fNameConfirm");
-        this.lName = document.getElementById("inputLastName");
-        this.fName = document.getElementById("inputFirstName");
+        this.lastName = document.getElementById("last-name");
+        this.firstName = document.getElementById("first-name");
         this.storedLastName = localStorage.getItem("lastname");
         this.storedFirstName = localStorage.getItem("firstname");
 
         this.minTimer = document.getElementById("minTimer");
         this.secTimer = document.getElementById("secTimer");
+
         this.timeMin = sessionStorage.getItem("timeMin");
         this.timeSec = sessionStorage.getItem("timeSec");
         this.timer = "";
@@ -44,10 +45,11 @@ Reservation.prototype.initReservation = function () {
     this.confirmResa.addEventListener("click", this.checkData.bind(this));
 
     if(this.timeSec===0 && this.timeMin===0) {
-        sessionStorage.setItem("stationAdress", "");
+        sessionStorage.setItem("stationadress", "");
+        sessionStorage.setItem("stationname", "");
     }
 
-    if(this.address) {
+    if(this.stationAdress) {
         this.displayConfirmResa();
         this.startTimer();
     }
@@ -64,14 +66,11 @@ Reservation.prototype.toggleCanvas = function () {
 
 
 Reservation.prototype.checkData = function () {
-    if (this.lName.value === "") {
+    if (this.lastName.value === "") {
         alert("Merci de renseigner votre nom pour valider votre réservation.");
     }
-    else if (this.fName.value === "") {
+    else if (this.firstName.value === "") {
         alert("Merci de renseigner votre prénom pour valider votre réservation.");
-    }
-    else if (canvas.paint === 0) {
-        alert("Votre signature est nécessaire pour valider votre réservation.");
     }
     else {
         this.storeData();
@@ -80,21 +79,20 @@ Reservation.prototype.checkData = function () {
 
 Reservation.prototype.storeData = function () {
     //stockage du nom et prenom en local
-    localStorage.setItem("lastname", this.lName.value);
-    localStorage.setItem("firstname", this.fName.value);
+    localStorage.setItem("last-name", this.lastName.value);
+    localStorage.setItem("first-name", this.firstName.value);
 
     //Attribution des données en local dans une variable
-    this.storedLastName = localStorage.getItem("lastname");
-    this.storedFirstName = localStorage.getItem("firstname");
+    this.storedLastName = localStorage.getItem("last-name");
+    this.storedFirstName = localStorage.getItem("first-name");
 
     //Stockage de l'adresse de la station sélectionnée
-    this.address = sessionStorage.getItem("stationAdress");
+    this.stationAdress = sessionStorage.getItem("stationadress");
 
     //Affichage de l'encadré confirmant la réservation avec nom, prenom, adresse de la station et timer
-
-    this.noRes.classList.add("hid");
-    this.resStop.classList.add("hid");
-    this.resConf.classList.remove("hid");
+    this.noReservation.classList.add("hide");
+    this.reservationTimerUp.classList.add("hide");
+    this.resConfirmed.classList.remove("hide");
     this.blockInfoResa.style.backgroundColor = "rgba(51,255,51,0.5)";
     this.timeMin = 20;
     this.timeSec = 0;
@@ -119,8 +117,8 @@ Reservation.prototype.countDown = function () {
         this.timeMin--;
     }
     if (this.timeMin < 0) {
-        this.resConf.classList.add("hid");
-        this.resStop.classList.remove("hid");
+        this.resConfirmed.classList.add("hide");
+        this.reservationTimerUp.classList.remove("hide");
         this.blockInfoResa.style.backgroundColor = "rgba(255,51,0,0.5)";
         clearInterval(this.timer);
     }
@@ -130,12 +128,18 @@ Reservation.prototype.displayConfirmResa = function () {
     this.timeMin = sessionStorage.getItem("timeMin");
     this.timeSec = sessionStorage.getItem("timeSec");
     this.setInfoResa();
-    this.noRes.classList.add("hid");
-    this.resConf.classList.remove("hid");
+    this.noReservation.classList.add("hide");
+    this.resConfirmed.classList.remove("hide");
     this.blockInfoResa.style.backgroundColor = "rgba(51,255,51,0.5)";
 };
 
 Reservation.prototype.setInfoResa = function () {
-    let storedData = document.getElementById("reservation-data");
-    storedData.innerHTML = "<p>Vélo réservé à l'adresse: " +this.address + ". Par " + this.storedLastName.value + " " + this.storedFirstName.value + ". Temps restant: " + this.timeMin + "min et " + this.timeSec + "s.</p>" ;
+    // let storedData = document.getElementById("reservation-data");
+    // storedData.innerHTML = "<p>Vélo réservé à l'adresse: " +this.stationAdress + ". Par " + this.storedLastName.value + " " + this.storedFirstName.value + ". Temps restant: " + this.timeMin + "min et " + this.timeSec + "s.</p>" ;
+
+    this.lastNameConfirm.innerText = this.storedLastName;
+    this.firstNameConfirm.innerText = this.storedFirstName;
+    this.stationAdressConfirm.innerText = this.stationAdress;
+    this.minTimer.innerText = this.timeMin;
+    this.secTimer.innerText = this.timeSec;
 };
