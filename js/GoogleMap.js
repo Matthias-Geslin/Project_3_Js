@@ -6,7 +6,7 @@ class GoogleMap {
     }
 
     initMap() {
-        var map = new google.maps.Map(document.getElementById("google-map"), {
+        var gMap = new google.maps.Map(document.getElementById("google-map"), {
             zoom: 13,
             center: this.nantes
         });
@@ -19,7 +19,7 @@ class GoogleMap {
 
                     var marker = new google.maps.Marker({
                         position: station.position,
-                        map: map,
+                        map: gMap,
                         icon:""
                     });
                     // Check if station Open
@@ -97,5 +97,5 @@ class GoogleMap {
                     addMarker(station);
                 });
             });
-    };
+    }
 }
