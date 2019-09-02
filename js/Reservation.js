@@ -16,8 +16,8 @@ class Reservation {
         this.noReservation = document.getElementById("noReservation");
         this.resConfirmed = document.getElementById("resConfirmed");
         this.reservationTimerUp = document.getElementById("reservationTimerUp");
-        this.stationAdress = sessionStorage.getItem("stationadress");
-        this.confirmResa = document.getElementById("validate");
+        this.stationAdress = sessionStorage.getItem("stationaddress");
+        this.buttonReservation = document.getElementById("validate");
 
         this.lastName = document.getElementById("last-name");
         this.firstName = document.getElementById("first-name");
@@ -42,10 +42,10 @@ Reservation.prototype.initReservation = function () {
         this.validateBtn.addEventListener("click", this.toggleCanvas.bind(this));
     };
 
-    this.confirmResa.addEventListener("click", this.checkData.bind(this));
+    this.buttonReservation.addEventListener("click", this.checkData.bind(this));
 
     if(this.timeSec===0 && this.timeMin===0) {
-        sessionStorage.setItem("stationadress", "");
+        sessionStorage.setItem("stationaddress", "");
         sessionStorage.setItem("stationname", "");
     }
 
@@ -87,7 +87,7 @@ Reservation.prototype.storeData = function () {
     this.storedFirstName = localStorage.getItem("first-name");
 
     //Stockage de l'adresse de la station sélectionnée
-    this.stationAdress = sessionStorage.getItem("stationadress");
+    this.stationAdress = sessionStorage.getItem("stationaddress");
 
     //Affichage de l'encadré confirmant la réservation avec nom, prenom, adresse de la station et timer
     this.noReservation.classList.add("hide");
@@ -119,7 +119,7 @@ Reservation.prototype.countDown = function () {
     if (this.timeMin < 0) {
         this.resConfirmed.classList.add("hide");
         this.reservationTimerUp.classList.remove("hide");
-        this.blockInfoResa.style.backgroundColor = "rgba(255,51,0,0.5)";
+        this.blockInfoResa.style.backgroundColor = "rgba(220,28,40,0.5)";
         clearInterval(this.timer);
     }
 };
@@ -134,9 +134,6 @@ Reservation.prototype.displayConfirmResa = function () {
 };
 
 Reservation.prototype.setInfoResa = function () {
-    // let storedData = document.getElementById("reservation-data");
-    // storedData.innerHTML = "<p>Vélo réservé à l'adresse: " +this.stationAdress + ". Par " + this.storedLastName.value + " " + this.storedFirstName.value + ". Temps restant: " + this.timeMin + "min et " + this.timeSec + "s.</p>" ;
-
     this.lastNameConfirm.innerText = this.storedLastName;
     this.firstNameConfirm.innerText = this.storedFirstName;
     this.stationAdressConfirm.innerText = this.stationAdress;
