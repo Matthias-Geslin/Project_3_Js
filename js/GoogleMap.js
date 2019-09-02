@@ -73,14 +73,27 @@ class GoogleMap {
                             stationName.innerText = "Nom: " + nameTruncated;
                             stationAddress.innerText = "Adresse: " + addressTruncated;
                             bikeStands.innerText = station.bike_stands + " supports à vélo.";
+                            availableBikes.innerText = station.available_bikes + " vélo(s) restant(s) disponible(s).";
 
-                            if (station.available_bikes < 1) {
-                                availableBikes.innerText = "Aucun vélo de disponible à cette station.";
-                                buttonReservation.classList.add("hide");
-                            } else if (station.available_bikes > 0) {
-                                availableBikes.innerText = station.available_bikes + " vélo(s) restant(s) disponible(s).";
-                                buttonReservation.classList.remove("hide");
+                            sessionStorage.setItem("stationBikeAvailable", station.available_bikes);
+                            let bikeAvailable = sessionStorage.getItem("stationBikeAvailable");
+
+                            // Bike available minus 1 by click on validate btn
+                            buttonReservation.addEventListener("click", function () {
+                                station.available_bikes = bikeAvailable--;
+
+                                if (station.available_bikes < 1) {
+                                    availableBikes.innerText = "Aucun vélo de disponible à cette station.";
+                                    buttonReservation.classList.add("hide");
+                                } else if (station.available_bikes > 0) {
+                                    availableBikes.innerText = station.available_bikes + " vélo(s) restant(s) disponible(s).";
+                                }
+                            });
+
+                            if (station.available_bikes > 0) {
+                                buttonReservation.classList.remove("hide")
                             }
+
                             sessionStorage.setItem("stationname", nameTruncated);
                             sessionStorage.setItem("stationaddress", addressTruncated);
                         });
@@ -88,8 +101,8 @@ class GoogleMap {
 
                 }
 
-                var stations = JSON.parse(reponse);
-                var latitude, longitude;
+                let stations = JSON.parse(reponse);
+                let latitude, longitude;
                 // Add Markers for each station latitude & longitude
                 stations.forEach(function (station) {
                     latitude = station.position.lat;
