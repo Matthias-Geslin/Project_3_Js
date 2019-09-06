@@ -80,8 +80,6 @@ class GoogleMap {
 
                             // Bike available minus 1 by click on validate btn
                             buttonReservation.addEventListener("click", function () {
-                                station.available_bikes = bikeAvailable--;
-
                                 if (station.available_bikes < 1) {
                                     availableBikes.innerText = "Aucun vélo de disponible à cette station.";
                                     buttonReservation.classList.add("hide");
@@ -91,7 +89,7 @@ class GoogleMap {
                             });
 
                             if (station.available_bikes > 0) {
-                                buttonReservation.classList.remove("hide")
+                                buttonReservation.classList.remove("hide");
                             }
 
                             sessionStorage.setItem("stationname", nameTruncated);
