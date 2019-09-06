@@ -7,11 +7,8 @@ slider.begin();
 var map = new GoogleMap();
 map.initMap();
 
-
 var reservation = new Reservation();
 reservation.initReservation();
-reservation.closed();
-reservation.toggleCanvasEle();
 
 var canvas = new Canvas();
 canvas.initCanvas();
