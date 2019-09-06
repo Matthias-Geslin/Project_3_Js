@@ -102,16 +102,16 @@ Slider.prototype.stop = function () {
 
 // Manual slide selection
 Slider.prototype.slide = function (index) {
-    if (index >= 0 && index <= this.total) {
-        this.stop();
-        for (let s = 0; s <= this.total; s++) {
-            if (s === index) {
-                this.slides[s].style.display = "block";
-            } else {
-                this.slides[s].style.display = "none";
-            }
-        }
-    } else {
+    if (index <= 0 && index >= this.total) {
         alert("Index " + index + " doesn't exist. Available : 0 - " + this.total);
+    } else {
+      this.stop();
+      for (let s = 0; s <= this.total; s++) {
+          if (s === index) {
+              this.slides[s].style.display = "block";
+          } else {
+              this.slides[s].style.display = "none";
+          }
+      }
     }
 };
