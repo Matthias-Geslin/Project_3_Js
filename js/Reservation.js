@@ -34,14 +34,8 @@ class Reservation {
 }
 
 Reservation.prototype.initReservation = function () {
-    this.closed = function () {
-        this.closeIt.addEventListener("click", this.hideReservation.bind(this));
-    };
-
-    this.toggleCanvasEle = function () {
-        this.validateBtn.addEventListener("click", this.toggleCanvas.bind(this));
-    };
-
+    this.closeIt.addEventListener("click", this.hideReservation.bind(this));
+    this.validateBtn.addEventListener("click", this.toggleCanvas.bind(this));
     this.buttonReservation.addEventListener("click", this.checkData.bind(this));
 
     if(this.timeSec===0 && this.timeMin===0) {
