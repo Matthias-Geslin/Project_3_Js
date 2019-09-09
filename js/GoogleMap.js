@@ -37,7 +37,7 @@ class GoogleMap {
 
                     // Check content
                     if (station.name) {
-                        new google.maps.InfoWindow({
+                        google.maps.InfoWindow({
                             content: station.name
                         });
                         const reserve = document.getElementById("reservation-box");
@@ -109,4 +109,4 @@ class GoogleMap {
                 });
             });
     };
-};
+}
