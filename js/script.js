@@ -5,7 +5,9 @@ var slider = new Slider();
 slider.begin();
 
 var map = new GoogleMap();
-map.initMap();
+function initMap() {
+  map.initMap();
+}
 
 var reservation = new Reservation();
 reservation.initReservation();
