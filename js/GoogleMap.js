@@ -37,9 +37,6 @@ class GoogleMap {
 
                     // Check content
                     if (station.name) {
-                        var infoWindow = new google.maps.InfoWindow({
-                            content: station.name
-                        });
                         const reserve = document.getElementById("reservation-box");
 
                         marker.addListener("click", function () {
