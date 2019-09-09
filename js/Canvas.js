@@ -21,10 +21,7 @@ Canvas.prototype.initCanvas = function () {
     let lastX = 0;
     let lastY = 0;
 
-    function draw(X, Y) {
-        if(!isDrawing) {
-            return;
-        }
+    function draw(X, Y) {        if(!isDrawing) {            return;        }
 
         // set the color
         ctx.strokeStyle = "#000000";
@@ -35,10 +32,7 @@ Canvas.prototype.initCanvas = function () {
         [lastX, lastY] = [X, Y];
     }
 
-    canvas.addEventListener("mousedown", (e) => {
-        isDrawing = true;
-        [lastX, lastY] = [e.layerX, e.layerY];
-    });
+    canvas.addEventListener("mousedown", (e) => {        isDrawing = true;        [lastX, lastY] = [e.layerX, e.layerY];    });
     canvas.addEventListener("mousemove", (e) => draw(e.layerX, e.layerY));
     canvas.addEventListener("mouseup", () => isDrawing = false);
     canvas.addEventListener("mouseout", () => isDrawing = false);
