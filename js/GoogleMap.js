@@ -37,7 +37,7 @@ class GoogleMap {
 
                     // Check content
                     if (station.name) {
-                        google.maps.InfoWindow({
+                        var infoWindow = new google.maps.InfoWindow({
                             content: station.name
                         });
                         const reserve = document.getElementById("reservation-box");
@@ -108,5 +108,5 @@ class GoogleMap {
                     addMarker(station);
                 });
             });
-    };
+    }
 }
