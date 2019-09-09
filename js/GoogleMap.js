@@ -3,7 +3,7 @@
 class GoogleMap {
     constructor(){
         this.nantes = {lat: 47.2173, lng: -1.5534};
-    };
+    }
 
     initMap() {
         let gMap = new google.maps.Map(document.getElementById("google-map"), {
