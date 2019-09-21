@@ -3,7 +3,7 @@
 class Canvas {
     constructor() {
         this.enable();
-        this.disable();
+        this.clear();
     }
 }
 
@@ -51,22 +51,25 @@ Canvas.prototype.enable = function () {
         buttonReservation.removeAttribute("disabled");
     }
     canvas.addEventListener("mousedown", function () {
-        if (lastName.value && firstName.value !== "") {
-            setTimeout(enable,2000);
+        if (lastName.value !== "" && firstName.value !== "") {
+            window.setTimeout(enable,1000);
         }
     });
 };
 
 
-Canvas.prototype.disable = function () {
-    let canvas = document.getElementById("canvas");
-    let buttonReservation = document.getElementById("validate");
 
-    // Disabling the validate button
+Canvas.prototype.clear = function () {
+    let buttonReservation = document.getElementById("validate");
+    let canvas = document.getElementById("canvas");
+
     function disable() {
         buttonReservation.setAttribute("disabled","");
     }
-    canvas.addEventListener("mouseout", function () {
-        setTimeout(disable,10000);
+
+    buttonReservation.addEventListener("click", function () {
+        let ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        window.setTimeout(disable,500);
     });
 };
