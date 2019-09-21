@@ -43,7 +43,7 @@ Reservation.prototype.initReservation = function () {
         sessionStorage.setItem("stationname", "");
     }
 
-    if(this.stationAdress) {
+    if(this.timeMin ==="null" || this.timeSec ==="NaN") {
         this.displayConfirmResa();
         this.startTimer();
     }
@@ -73,12 +73,12 @@ Reservation.prototype.checkData = function () {
 
 Reservation.prototype.storeData = function () {
     //stockage du nom et prenom en local
-    localStorage.setItem("last-name", this.lastName.value);
-    localStorage.setItem("first-name", this.firstName.value);
+    localStorage.setItem("lastname", this.lastName.value);
+    localStorage.setItem("firstname", this.firstName.value);
 
     //Attribution des données en local dans une variable
-    this.storedLastName = localStorage.getItem("last-name");
-    this.storedFirstName = localStorage.getItem("first-name");
+    this.storedLastName = localStorage.getItem("lastname");
+    this.storedFirstName = localStorage.getItem("firstname");
 
     //Stockage de l'adresse de la station sélectionnée
     this.stationAdress = sessionStorage.getItem("stationaddress");
