@@ -38,17 +38,28 @@ class GoogleMap {
                     // Check content
                     if (station.name) {
                         const reserve = document.getElementById("reservation-box");
+                        const stationName = document.getElementById("station-name");
+                        const stationAddressContainer = document.getElementById("station-address");
+                        const bikeStands = document.getElementById("station-stands");
+                        const availableBikes = document.getElementById("available-bikes");
+                        const buttonReservation = document.getElementById("validate");
+
+                        // Removing excessive numbers with regex
+                        const regex = /#0+0/gm;
+                        const nameString = `${station.name}`;
+                        const addressString = `${station.address}`;
+                        const subst = "";
+
+                        // The substituted value will be contained in the result variable
+                        const nameTruncated = nameString.replace(regex, subst);
+                        const addressTruncated = addressString.replace(regex, subst);
+
 
                         marker.addListener("click", function () {
 
                             reserve.classList.remove("hide");
                             reserve.classList.add("flex");
 
-                            const stationName = document.getElementById("station-name");
-                            const stationAddress = document.getElementById("station-address");
-                            const bikeStands = document.getElementById("station-stands");
-                            const availableBikes = document.getElementById("available-bikes");
-                            const buttonReservation = document.getElementById("validate");
 
                             // Status infos
                             if (station.status === "OPEN") {
@@ -57,43 +68,47 @@ class GoogleMap {
                                 stationStatus.textContent = "Fermée";
                             }
 
-                            // Removing excessive numbers with regex
-                            const regex = /#0+0/gm;
-                            const nameString = `${station.name}`;
-                            const addressString = `${station.address}`;
-                            const subst = "";
-
-                            // The substituted value will be contained in the result variable
-                            const nameTruncated = nameString.replace(regex, subst);
-                            const addressTruncated = addressString.replace(regex, subst);
-
                             stationName.innerText = "Nom: " + nameTruncated;
-                            stationAddress.innerText = "Adresse: " + addressTruncated;
+                            stationAddressContainer.innerText = "Adresse: " + addressTruncated;
                             bikeStands.innerText = station.bike_stands + " supports à vélo.";
-                            availableBikes.innerText = station.available_bikes + " vélo(s) restant(s) disponible(s).";
+
 
                             sessionStorage.setItem("stationBikeAvailable", station.available_bikes);
-                            let bikeAvailable = sessionStorage.getItem("stationBikeAvailable");
+                            let realAvailableBikes = 0;
 
+                            realAvailableBikes = sessionStorage.getItem("stationBikeAvailable");
+
+                            if (this.stationAddress) {
+                                realAvailableBikes = station.available_bikes--;
+                            } else {
+                                realAvailableBikes = station.available_bikes;
+                            }
                             // Bike available minus 1 by click on validate btn
                             buttonReservation.addEventListener("click", function () {
-                                station.available_bikes = bikeAvailable -1;
 
-                                if (station.available_bikes < 1) {
+
+                                if (realAvailableBikes < 1) {
                                     availableBikes.innerText = "Aucun vélo de disponible à cette station.";
                                     buttonReservation.classList.add("hide");
-                                } else if (station.available_bikes > 0) {
-                                    availableBikes.innerText = station.available_bikes + " vélo(s) restant(s) disponible(s).";
+                                } else if (realAvailableBikes > 0) {
+                                    availableBikes.innerText = realAvailableBikes + " vélo(s) restant(s) disponible(s).";
+                                    buttonReservation.classList.remove("hide");
                                 }
                             });
 
-                            if (station.available_bikes > 0) {
-                                buttonReservation.classList.remove("hide");
-                            }
+                            availableBikes.innerText = realAvailableBikes + " vélo(s) restant(s) disponible(s).";
 
                             sessionStorage.setItem("stationname", nameTruncated);
                             sessionStorage.setItem("stationaddress", addressTruncated);
+
+                            if (reservation.storedLastName !== "" && reservation.storedFirstName !== "")
+                            {
+                                document.getElementById("lastname").value = reservation.storedLastName;
+                                document.getElementById("firstname").value = reservation.storedFirstName;
+                            }
                         });
+
+
                     }
 
                 }
