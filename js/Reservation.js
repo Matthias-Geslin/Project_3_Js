@@ -4,28 +4,27 @@ class Reservation {
     constructor() {
         this.closeIt = document.getElementById("close-it");
         this.reserve = document.getElementById("reservation-box");
-        this.blockInfoResa = document.getElementById("infoReservation");
 
         this.validateBtn = document.getElementById("validate");
         this.canvas = document.getElementById("canvas");
-        this.stationAdressConfirm = document.getElementById("stationConfirm");
 
+        this.lastName = document.getElementById("lastname");
+        this.firstName = document.getElementById("firstname");
+        this.storedLastName = localStorage.getItem("lastname");
+        this.storedFirstName = localStorage.getItem("firstname");
+
+        this.blockInfoResa = document.getElementById("infoReservation");
         this.lastNameConfirm = document.getElementById("lastNameConfirm");
         this.firstNameConfirm = document.getElementById("firstNameConfirm");
+        this.stationAdressConfirm = document.getElementById("stationConfirm");
+        this.minTimer = document.getElementById("minTimer");
+        this.secTimer = document.getElementById("secTimer");
 
         this.noReservation = document.getElementById("noReservation");
         this.resConfirmed = document.getElementById("resConfirmed");
         this.reservationTimerUp = document.getElementById("reservationTimerUp");
-        this.stationAdress = sessionStorage.getItem("stationaddress");
+        this.stationAddress = sessionStorage.getItem("stationaddress");
         this.buttonReservation = document.getElementById("validate");
-
-        this.lastName = document.getElementById("last-name");
-        this.firstName = document.getElementById("first-name");
-        this.storedLastName = localStorage.getItem("lastname");
-        this.storedFirstName = localStorage.getItem("firstname");
-
-        this.minTimer = document.getElementById("minTimer");
-        this.secTimer = document.getElementById("secTimer");
 
         this.timeMin = sessionStorage.getItem("timeMin");
         this.timeSec = sessionStorage.getItem("timeSec");
@@ -33,21 +32,23 @@ class Reservation {
     }
 }
 
+
 Reservation.prototype.initReservation = function () {
     this.closeIt.addEventListener("click", this.hideReservation.bind(this));
     this.validateBtn.addEventListener("click", this.toggleCanvas.bind(this));
     this.buttonReservation.addEventListener("click", this.checkData.bind(this));
 
-    if(this.timeSec===0 && this.timeMin===0) {
+    if(this.timeSec === 0 && this.timeMin === 0) {
         sessionStorage.setItem("stationaddress", "");
         sessionStorage.setItem("stationname", "");
     }
 
-    if(this.timeMin ==="null" || this.timeSec ==="NaN") {
+    if(this.timeMin !== null && this.timeSec !== isNaN) {
         this.displayConfirmResa();
         this.startTimer();
     }
 };
+
 
 Reservation.prototype.hideReservation = function () {
     this.reserve.classList.add("hide");
@@ -71,19 +72,17 @@ Reservation.prototype.checkData = function () {
     }
 };
 
+
 Reservation.prototype.storeData = function () {
-    //stockage du nom et prenom en local
     localStorage.setItem("lastname", this.lastName.value);
     localStorage.setItem("firstname", this.firstName.value);
 
-    //Attribution des données en local dans une variable
     this.storedLastName = localStorage.getItem("lastname");
     this.storedFirstName = localStorage.getItem("firstname");
 
-    //Stockage de l'adresse de la station sélectionnée
-    this.stationAdress = sessionStorage.getItem("stationaddress");
+    this.stationAddress = sessionStorage.getItem("stationaddress");
 
-    //Affichage de l'encadré confirmant la réservation avec nom, prenom, adresse de la station et timer
+    // Display of the square with reservations info
     this.noReservation.classList.add("hide");
     this.reservationTimerUp.classList.add("hide");
     this.resConfirmed.classList.remove("hide");
@@ -96,10 +95,11 @@ Reservation.prototype.storeData = function () {
     this.startTimer();
 };
 
-//Mise en place du timer
+
 Reservation.prototype.startTimer = function () {
     this.timer = setInterval(this.countDown.bind(this), 1000);
 };
+
 
 Reservation.prototype.countDown = function () {
     sessionStorage.setItem("timeMin",this.timeMin);
@@ -118,19 +118,22 @@ Reservation.prototype.countDown = function () {
     }
 };
 
+
 Reservation.prototype.displayConfirmResa = function () {
     this.timeMin = sessionStorage.getItem("timeMin");
     this.timeSec = sessionStorage.getItem("timeSec");
     this.setInfoResa();
     this.noReservation.classList.add("hide");
     this.resConfirmed.classList.remove("hide");
+    this.resConfirmed.style.display = "block";
     this.blockInfoResa.style.backgroundColor = "rgba(51,255,51,0.5)";
 };
+
 
 Reservation.prototype.setInfoResa = function () {
     this.lastNameConfirm.innerText = this.storedLastName;
     this.firstNameConfirm.innerText = this.storedFirstName;
-    this.stationAdressConfirm.innerText = this.stationAdress;
+    this.stationAdressConfirm.innerText = this.stationAddress;
     this.minTimer.innerText = this.timeMin;
     this.secTimer.innerText = this.timeSec;
 };
