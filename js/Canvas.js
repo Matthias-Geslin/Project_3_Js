@@ -42,8 +42,8 @@ Canvas.prototype.initCanvas = function () {
 
 Canvas.prototype.enable = function () {
     let canvas = document.getElementById("canvas");
-    let lastName = document.getElementById("last-name");
-    let firstName = document.getElementById("first-name");
+    let lastName = document.getElementById("lastname");
+    let firstName = document.getElementById("firstname");
     let buttonReservation = document.getElementById("validate");
 
     // Enabling the validate button
