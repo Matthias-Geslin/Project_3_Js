@@ -54,6 +54,8 @@ class GoogleMap {
                         const nameTruncated = nameString.replace(regex, subst);
                         const addressTruncated = addressString.replace(regex, subst);
 
+                        let realAvailableBikes = 0;
+                        realAvailableBikes = sessionStorage.getItem("stationBikeAvailable");
 
                         marker.addListener("click", function () {
 
@@ -68,23 +70,22 @@ class GoogleMap {
                                 stationStatus.textContent = "Fermée";
                             }
 
+                            // Initialisation of reservation info
                             stationName.innerText = "Nom: " + nameTruncated;
                             stationAddressContainer.innerText = "Adresse: " + addressTruncated;
                             bikeStands.innerText = station.bike_stands + " supports à vélo.";
+                            availableBikes.innerText = station.available_bikes + " vélo(s) restant(s) disponible(s).";
 
 
-                            sessionStorage.setItem("stationBikeAvailable", station.available_bikes);
-                            let realAvailableBikes = 0;
-
-                            realAvailableBikes = sessionStorage.getItem("stationBikeAvailable");
-
-                            if (this.stationAddress) {
-                                realAvailableBikes = station.available_bikes--;
-                            } else {
-                                realAvailableBikes = station.available_bikes;
-                            }
                             // Bike available minus 1 by click on validate btn
                             buttonReservation.addEventListener("click", function () {
+                                if (reservation.timeMin !== null && reservation.timeSec !== isNaN) {
+                                    realAvailableBikes = station.available_bikes-1;
+                                    availableBikes.innerText = realAvailableBikes + " vélo(s) restant(s) disponible(s).";
+                                    sessionStorage.setItem("stationBikeAvailable", realAvailableBikes);
+                                } else {
+                                    realAvailableBikes = station.available_bikes;
+                                }
 
 
                                 if (realAvailableBikes < 1) {
@@ -94,12 +95,11 @@ class GoogleMap {
                                     availableBikes.innerText = realAvailableBikes + " vélo(s) restant(s) disponible(s).";
                                     buttonReservation.classList.remove("hide");
                                 }
+
+                                sessionStorage.setItem("stationname", nameTruncated);
+                                sessionStorage.setItem("stationaddress", addressTruncated);
                             });
 
-                            availableBikes.innerText = realAvailableBikes + " vélo(s) restant(s) disponible(s).";
-
-                            sessionStorage.setItem("stationname", nameTruncated);
-                            sessionStorage.setItem("stationaddress", addressTruncated);
 
                             if (reservation.storedLastName !== "" && reservation.storedFirstName !== "")
                             {
@@ -107,10 +107,7 @@ class GoogleMap {
                                 document.getElementById("firstname").value = reservation.storedFirstName;
                             }
                         });
-
-
                     }
-
                 }
 
                 let stations = JSON.parse(reponse);
