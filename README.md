@@ -1,5 +1,9 @@
 # Project 3 Js
 
+<<<<<<< HEAD
+=======
+Instructional Template to start a Web Application with a PHP MVC Architecture
+>>>>>>> master
 
 ## Summary 
 
