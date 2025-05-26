@@ -16,7 +16,7 @@ class GoogleMap {
                 function addMarker(station) {
                     let stationStatus = document.getElementById("station-status");
 
-                    let marker = new google.maps.Marker({
+                    let marker = new google.maps.Marker.AdvancedMarkerElement({
                         position: station.position,
                         map: gMap,
                         icon:""
